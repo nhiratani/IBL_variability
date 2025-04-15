@@ -15,7 +15,6 @@ import scipy.stats as scist
 from os import path
 from brainbox.io.one import SessionLoader
 
-# define functions
 
 def load_wheel_data(eid, session_type):
 	try:
@@ -28,6 +27,7 @@ def load_wheel_data(eid, session_type):
 			wheel_data = one.load_object(eid, 'wheel', collection='alf')
 			wheel_position = wheel_data['position']
 			wheel_timestamps = wheel_data['timestamps']
+			# for legacy cache
 			#wheel_timestamps = one.load(eid, dataset_type = 'wheel_timestamps')
 			#wheel_positions = one.load(eid, dataset_type = 'wheel_positions')
 			#wheel_timestamps = one.load_object(eid, 'wheel_timestamps')
