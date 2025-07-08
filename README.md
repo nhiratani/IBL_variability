@@ -1,4 +1,4 @@
-# IBL_variability
+# IBL individual variability project
 Analysis codes for IBL individual variability project
 
 - RT_analysis.py: Code for RT analysis in Fig. 1
@@ -13,6 +13,8 @@ Analysis codes for IBL individual variability project
 
 - plot_stats_helper.py: Helper function for generating plots in Figs. 5 and 6
 
+- data_loading.py: Functions for electrophysiology data loading
+
 - ac_fitting.py, calc_ac_SA.py, calc_ac_ITI.py: Functions for estimating and fitting autocorrelation curves
 
 - calc_behav_stats.py: Code for calculating behavioral statistics.
@@ -23,4 +25,4 @@ Analysis codes for IBL individual variability project
 
 - - - 
 
-- Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL analysis environment. 
+- Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL data analysis environment. 
