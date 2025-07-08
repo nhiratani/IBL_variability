@@ -40,6 +40,8 @@ def get_behavioral_stats(session_ids, hy_params):
 	data = {}
 	for session_id in session_ids:
 		fname = "../bdata_ephys/calc_behav_stats_eid" + str(session_id) + ".txt"
+		#fname = "bdata_ephys/calc_behav_stats_eid" + str(session_id) + ".txt"
+		#fname = "../analysis1/data/calc_trial_stats_eid" + str(session_id) + ".txt"
 		if os.path.isfile(fname):
 			lidx = 0
 			for line in open(fname, 'r'):

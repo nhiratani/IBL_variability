@@ -147,7 +147,7 @@ def write_file(sbj_list, metrics_history, psych_curves, chrono_curves, Wa, model
 	fstr = 'fdata/a2v_run_input_type_' + model_params['input_type'] + '_output_type_' + str(model_params['output_type']) + '_Na' + str(model_params['Na'])\
 		+ '_N0' + str(model_params['N0']) + '_poslen' + str(data_params['poslen'])+ '_cbr' + str(model_params['cb_ratio'])\
 		+ '_mvr' + str(data_params['min_valid_rate']) + '_lr' + str(model_params['learning_rate']) + '_nep' + str(model_params['num_epochs']) \
-		+ '_dtype_' + str(data_params['data_type']) + '_ds' + str(data_params['data_seed']) + '.txt'
+		+ '_dtype_' + str(data_params['data_type']) + '_tr' + str(data_params['test_ratio']) + '_ds' + str(data_params['data_seed']) + '.txt'
 	fw = open(fstr, 'w')
 	
 	fwtmp = ""
@@ -272,7 +272,7 @@ if __name__ == "__main__":
 		'min_valid_rate': 0.8, #0.8, # the minimum percentage of valid trials
 		'poslen': 4, # length of position representation
 		'RT_offset': 0.2, # negative offset of reaction time
-		'test_ratio': 0.1,
+		'test_ratio': 0.1, #0.1,
 		'data_seed': 0 
 		}
 	
@@ -290,7 +290,7 @@ if __name__ == "__main__":
 
 	model_params['N1'] = model_params['N0'] + model_params['Nt'] + data_params['poslen']
 	
-	input_types = ['t', 'tp' ,'tpa']
+	input_types = ['t', 'tp' ,'tpa'] #['tpa'] #['t', 'tp' ,'tpa']
 	for input_type in input_types:
 		model_params['input_type'] = input_type
 		for ik in range(model_params['ikmax']):
