@@ -8,13 +8,13 @@ from one.api import ONE
 ONE.setup(base_url='https://openalyx.internationalbrainlab.org', silent=True)
 one = ONE(password='international')
 
-
 import numpy as np
 import scipy.stats as scist
 
 from os import path
 from brainbox.io.one import SessionLoader
 
+# define functions
 
 def load_wheel_data(eid, session_type):
 	try:
@@ -27,7 +27,6 @@ def load_wheel_data(eid, session_type):
 			wheel_data = one.load_object(eid, 'wheel', collection='alf')
 			wheel_position = wheel_data['position']
 			wheel_timestamps = wheel_data['timestamps']
-			# for legacy cache
 			#wheel_timestamps = one.load(eid, dataset_type = 'wheel_timestamps')
 			#wheel_positions = one.load(eid, dataset_type = 'wheel_positions')
 			#wheel_timestamps = one.load_object(eid, 'wheel_timestamps')
@@ -102,6 +101,7 @@ def calc_movement_onset_times(trial_timestamps, trial_velocity, stimOn_times):
 					movement_directions[tridx].append( np.sign(trial_velocity[tridx][tpidx]) )
 				cm_dur = 0.0
 			tprev = t
+		
 		movement_onset_counts[tridx] = len(movement_onset_times[tridx])
 		if len(movement_onset_times[tridx]) == 0:
 			first_movement_onset_times[tridx] = np.NaN
@@ -117,8 +117,11 @@ def calc_movement_onset_times(trial_timestamps, trial_velocity, stimOn_times):
 	return movement_onset_times, first_movement_onset_times, last_movement_onset_times, first_movement_directions, last_movement_directions
 
 
-def write_data_to_file( sdata ):
-	fname = "bdata_ephys/calc_behav_stats_eid" + str( sdata['session_id'] ) + ".txt"
+def write_data_to_file( sdata, session_type ):
+	if session_type == 'ephys':
+		fname = "bdata_ephys/calc_behav_stats_eid" + str( sdata['session_id'] ) + ".txt"
+	elif session_type == 'behav':
+		fname = "bdata_all/calc_behav_stats_eid" + str( sdata['session_id'] ) + ".txt"
 	
 	fw = open(fname, 'w')
 	fw.write( str(sdata['subject']) + " " + str(sdata['session_id']) + " " + str(sdata['lab']) + " " + str(sdata['date'])\
@@ -129,10 +132,10 @@ def write_data_to_file( sdata ):
 		+ " " + str(sdata['stimOn_times'][tidx]) + " " + str(sdata['goCue_times'][tidx]) + " " + str(sdata["feedback_times"][tidx])\
 		+ " " + str(sdata["intervals"][tidx][0]) + " " + str(sdata["intervals"][tidx][1]) + " " + str(sdata["first_movement_onset_times"][tidx])\
 		+ " " + str(sdata["first_movement_directions"][tidx]) + " " + str(sdata["last_movement_onset_times"][tidx])\
-		+ " " + str(sdata["last_movement_directions"][tidx]) + "\n")
+		+ " " + str(sdata["last_movement_directions"][tidx]) + " " + str( len(sdata["movement_onset_times"][tidx]) ) + "\n")
 
 
-def process_behav_data(sesison_type):
+def process_behav_data(session_type):
 	if session_type == 'ephys':
 		eids, sess_infos = one.search(task_protocol= '_iblrig_tasks_ephysChoiceWorld6.*', details=True)
 	elif session_type == 'behav':
@@ -182,6 +185,7 @@ def process_behav_data(sesison_type):
 				trials_data['last_movement_onset_times'] = last_movement_onset_times
 				trials_data['first_movement_directions'] = first_movement_directions
 				trials_data['last_movement_directions'] = last_movement_directions
+				#trials_data['last_movement_directions'] = last_movement_directions
 	
 				trials_data['subject'] = session_info['subject']
 				trials_data['session_id'] = eid
@@ -196,7 +200,7 @@ def process_behav_data(sesison_type):
 					trials_data['sex'] = subject_data['sex']
 					trials_data['age_weeks'] = subject_data['age_weeks']
 					
-					write_data_to_file(trials_data)
+					write_data_to_file(trials_data, session_type)
 					
 				except requests.exceptions.SSLError as e:
 					print(f"error encountered for session_id {eid}: {e}")
@@ -207,7 +211,6 @@ def process_behav_data(sesison_type):
 		
 		except Exception as e:
 			print(f"Failed to load trials for {eid}: {e}")
-	
 
 
 if __name__ == "__main__":
