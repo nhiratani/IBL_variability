@@ -20,6 +20,7 @@ for cidx in range(cnum):
 	clrs.append( cm.rainbow( (0.5+cidx)/cnum ) )
 
 
+# loss landscape potential function
 def f(x, a, b):
 	if x < -a:
 		return (4*b/(a*a))*(x+a)*(x+a) - b
@@ -28,7 +29,7 @@ def f(x, a, b):
 	else:
 		return -(b/2)*( 1 + np.cos( x*(2*pi)/a ) )
 
-
+# derivative of the loss landscape
 def df(x, a, b):
 	if x < -a:
 		return (8*b/(a*a))*(x+a)
@@ -257,11 +258,11 @@ if __name__ == "__main__":
 	params = {
 		'dt': 0.01, # discretization of time
 		'a': 1.0, # distance between local minima 
-		'bqs': [2.0, 4.0, 6.0], #[2.0, 4.0, 6.0], # height of loss landscape
-		'sigma': 1.75, #2.0, #1.5, #1.7, #2.0, # noise level 
+		'bqs': [2.0, 4.0, 6.0],# height of loss landscape
+		'sigma': 1.75, #2.0  # noise level 
 		'T': 10000 , # the duration of simulations 
 		'Tesc': 60, # the duration of simulations for escape time estimation
-		'Tinit': 0.5, #0.5, # the initial duration before the external input is provided
+		'Tinit': 0.5, # the initial duration before the external input is provided
 		'Ta': 250, # maximum interval for auto-correlation calculation (in terms of time points)
 	}
 	#plot_schematic(params)
