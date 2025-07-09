@@ -7,11 +7,11 @@ Analysis codes for IBL individual variability project
 
 - Animal2vec : Code for the animal embedding analysis in Fig. 3
 
-- model : Code for the simple model in Fig. 4
+- model : Code for the mechanistic model in Fig. 4
 
 - plot_neural_stats.py: Code for generating plots in Figs. 5 and 6
 
-- plot_stats_helper.py: Helper function for generating plots in Figs. 5 and 6
+- plot_stats_helper.py: Helper functions for generating plots in Figs. 5 and 6
 
 - data_loading.py: Functions for electrophysiology data loading
 
@@ -25,4 +25,6 @@ Analysis codes for IBL individual variability project
 
 - - - 
 
-- Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL data analysis environment. 
+- Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL data analysis environment.
+
+- Inquiry should be addressed to hiratani@wustl.edu
