@@ -477,7 +477,9 @@ def plot_hierarchy_scores(region_stats, hy_params, behav_params, params_str, dat
 	
 
 # Estimate mean firing rate during SA and correlates with animal/session-wise anticipatory tendency
-def load_FR_data_SA(hy_params, behav_params):
+def load_FR_data_SA(hy_params, behav_params, session_behav_stats):
+	region_of_interests, region_division = region_of_interests_and_division()
+	
 	session_SA_stats = {}
 	region_SA_stats = {}
 	region_SA_corr = {}; region_SA_corr_ste = {}
@@ -529,7 +531,9 @@ def load_FR_data_SA(hy_params, behav_params):
 
 
 # Estimate mean firing rate during ITI and correlates with animal/session-wise anticipatory tendency
-def load_FR_data_ITI(hy_params, behav_params):
+def load_FR_data_ITI(hy_params, behav_params, session_behav_stats):
+	region_of_interests, region_division = region_of_interests_and_division()
+	
 	session_ITI_stats = {}
 	region_ITI_stats = {}
 	region_ITI_corr = {}; region_ITI_corr_ste = {}	
@@ -567,17 +571,20 @@ def load_FR_data_ITI(hy_params, behav_params):
 						#session_ITI_stats[session_id]['medianFR'] = np.nanmedian(session_ITI_stats[session_id]['FR'])
 			
 			region_ITI_stats[region_of_interest] = {}
-			region_mean_FR = 0 
+			region_mean_FR = 0; region_mean_FR_cnt = 0  
 			for ITI_FR_stat in ITI_FR_stats:
 				session_id = ITI_FR_stat['sid']
 				if session_id in session_behav_stats.keys() and session_behav_stats[session_id]['num_trials'] > behav_params['min_trials']:
 					region_ITI_stats[region_of_interest][session_id] = {'meanFR': np.nanmean(ITI_FR_stat['FR']), 'impulsivity':session_ITI_stats[session_id]['impulsivity']}
-					region_mean_FR += region_ITI_stats[region_of_interest][session_id]['meanFR']/len(ITI_FR_stats)
+					region_mean_FR += region_ITI_stats[region_of_interest][session_id]['meanFR']#/len(ITI_FR_stats)
+					region_mean_FR_cnt += 1
+			region_mean_FR = region_mean_FR/region_mean_FR_cnt
+			
 			# relative FR
 			for ITI_FR_stat in ITI_FR_stats:
 				session_id = ITI_FR_stat['sid']
 				if session_id in region_ITI_stats[region_of_interest].keys():
-					region_ITI_stats[region_of_interest][session_id]['relativeMeanFR'] = region_ITI_stats[region_of_interest][session_id]['meanFR']/region_mean_FR 
+					region_ITI_stats[region_of_interest][session_id]['relativeFR'] = region_ITI_stats[region_of_interest][session_id]['meanFR']/region_mean_FR 
 			if len(region_ITI_stats[region_of_interest]) >= 5:
 				xs = []; ys = []
 				for session_id in region_ITI_stats[region_of_interest].keys():
@@ -597,14 +604,14 @@ def plot_FR_characteristics(hy_params, behav_params, data_type):
 		params_str = '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc'])\
 					+ '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes'])
 		region_stats, session_behav_stats, sbj_behav_stats = load_ac_behav_data(hy_params, behav_params, params_str, 'SA')
-		session_stats, region_stats, region_corr, region_corr_ste = load_FR_data_SA(hy_params, behav_params, params_str)
+		session_stats, region_stats, region_corr, region_corr_ste = load_FR_data_SA(hy_params, behav_params, session_behav_stats)
 
 	elif data_type == 'ITI':
 		params_str = '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
 					+ '_itimaxd' + str(hy_params['ITI_max_dur']) + '_tpstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
 					+ '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])	
 		region_stats, session_behav_stats, sbj_behav_stats = load_ac_behav_data(hy_params, behav_params, params_str, 'ITI')
-		session_stats, region_stats, region_corr, region_corr_ste = load_FR_data_ITI(hy_params, behav_params, params_str)
+		session_stats, region_stats, region_corr, region_corr_ste = load_FR_data_ITI(hy_params, behav_params, session_behav_stats)
 
 	division_corr = {}; division_corr_ste = {}
 	for division in region_division.keys():
@@ -616,6 +623,7 @@ def plot_FR_characteristics(hy_params, behav_params, data_type):
 					ydivs.append( region_stat['impulsivity'] )
 		division_corr[division] = calc_corr(xdivs, ydivs)
 		division_corr_ste[division] = calc_corr_ste( division_corr[division], len(xdivs))		
+		print( division, calc_perm_significance(xdivs, ydivs) )
 		
 	colorize_and_label_svg(
 		"cortical_map.svg", 
@@ -653,6 +661,8 @@ def plot_FR_characteristics(hy_params, behav_params, data_type):
 	ys['tot'] = np.concatenate( (ys['F'], ys['M']) )
 	rho_hat, rho_intercept, pvalue = calc_perm_significance(xs['tot'], ys['tot'])
 	print('animal-level relative FR:', rho_hat, rho_intercept, pvalue)
+	print( np.mean(xs['tot']) )
+	print(xs['tot'])
 	
 	fig1.savefig("figs/fig_neural/" + str(data_type) + "_FR_characteristics_rel_global_FR_" + params_str + ".pdf" )
 	
@@ -669,6 +679,7 @@ def plot_FR_characteristics(hy_params, behav_params, data_type):
 		corrs.append( division_corr[division] )
 		corr_stes.append( division_corr_ste[division] )
 		region_colors.append( region_color_palatte[2*didx] )
+		#print(division, corrs[-1], corr_stes[-1], )
 	region_names.append('Cortex')
 	corrs.append( rho_hat )
 	corr_stes.append( calc_corr_ste(rho_hat, len(xs['tot'])) )
@@ -691,8 +702,8 @@ def SA_behav_timescale_comparison(SA_hy_params, behav_params):
 					
 	region_stats, session_behav_stats, sbj_behav_stats = load_ac_behav_data(SA_hy_params, behav_params, params_str, 'SA')
 	plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stats, SA_hy_params, behav_params, params_str, 'SA')
-	#plot_tau_tau_comparison(region_stats, sbj_behav_stats, SA_hy_params, behav_params, params_str, 'SA')
-	#plot_hierarchy_scores(region_stats, SA_hy_params, behav_params, params_str, 'SA')
+	plot_tau_tau_comparison(region_stats, sbj_behav_stats, SA_hy_params, behav_params, params_str, 'SA')
+	plot_hierarchy_scores(region_stats, SA_hy_params, behav_params, params_str, 'SA')
 
 
 def SA_neuronwise_timescale_analysis(SA_hy_params, behav_params):
@@ -891,42 +902,42 @@ if __name__ == "__main__":
 	}
 	
 	SA_hy_params = {
-		'cluster_qc': 0.0, #1.0
+		'cluster_qc': 1.0, #1.0
 		'min_neurons': 10,
 		'min_total_spikes': 10000,#0, # 100000
 		'min_firing_rate': 1.0, # for neuron-wise auto-correlation fitting
-		'bin_size': 0.01, #0.01, #0.01, #0.02, # (0.01 for population fitting)
-		'acf_bin_max': 150, #150, #150, #75, # (150 for population fitting; )
-		'n_iter': 1000000, #0, #100000, #100000,
-		'n_seeds': 10000, #1000
+		'bin_size': 0.01, # (0.01 for population fitting)
+		'acf_bin_max': 150, # (150 for population fitting)
+		'n_iter': 1000000, #100000, # number of maximum iterations for curve_fit
+		'n_seeds': 10000, # number of seeds for curv_fit
 		#'tau_threshold': 0.03, # max tau1 and min tau2
 		'tau_num': 'double', # number of exponential decays
-		'model': 'without_phase', #'without_osci', #'without_phase' #"with_phase" #"without_osci"
-		'projection': 'allone', #'HoldGo', # 'allone' or 'PC1' or 'HoldGo' or 'LR'
+		'model': 'without_phase', # 'without_osci' or 'without_phase' or "with_phase" 
+		'projection': 'allone', # projection of the population activity 'allone' or 'PC1' or 'HoldGo' or 'LR'
 		
-		'max_error': 0.025, ##0.025, # maximum fitting error (0.025 for population fitting;  )
+		'max_error': 0.025, #maximum fitting error (0.025 for population fitting)
 		
 		'min_FT': 0.1, # minimum feedback time for task vector estimation
 		'max_FT': 1.0, # maximum feedback time for task vector estimation
-		'hold_period_start': 0.6, #0.55, # hold period on average starts 0.55 sec before stimOn
-		'hold_period_end': 0.2, #0.1, #0.05, # exclude the last 50 ms of the hold periods
+		'hold_period_start': 0.6, #, # hold period on average starts 0.55 sec before stimOn
+		'hold_period_end': 0.2, # exclude the last 200 ms of the hold periods
 		
 		'trait': 'impulsivity'
 	}
-	#SA_behav_timescale_comparison(SA_hy_params, behav_params)
-	#SA_FR_characteristics(SA_hy_params, behav_params)
-	fit_comparison_SA(SA_hy_params, behav_params)
+	SA_behav_timescale_comparison(SA_hy_params, behav_params)
+	#plot_FR_characteristics(SA_hy_params, behav_params, 'SA')
+	#fit_comparison_SA(SA_hy_params, behav_params)
 	
 	#SA_neuronwise_timescale_analysis(SA_hy_params, behav_params)
 	
 	ITI_full_hy_params = {
 		'cluster_qc': 0.0, # 0.0 or 0.5
 		'min_neurons': 10,
-		'min_total_spikes': 10000, #30000, #100000, 
-		'bin_size': 0.01, # 0.01  bin size 
-		'acf_bin_max': 75,  #250, # number of bins used for fitting
-		'n_iter': 100000, #0, #100000, 
-		'n_seeds': 1000, #0, #1000,
+		'min_total_spikes': 10000, #100000, 
+		'bin_size': 0.01, # bin size 
+		'acf_bin_max': 75,  # number of bins used for fitting
+		'n_iter': 100000, # 
+		'n_seeds': 1000, # 
 		#'tau_threshold': 0.03, # max tau1 and min tau2
 		'tau_num': 'double', # triple is not applicable due to short ITI window
 		'model': 'without_osci', # "with_phase" or "without_phase" or "without_osci"
@@ -940,15 +951,15 @@ if __name__ == "__main__":
 		's_cutoff': 40, # remove last 40 trials to minimize the effect of satation. 
 		
 		'ITI_def': 'init_period', # "full" or "conditional" or "init_period"
-		'ITI_max_dur': 2.0, #1.5, #1.3, # ITI_start time for fixed ITI analysis
-		'pre_stim_period': 0.5, #0.5, # [s] stimOn_time - pre_stim_period is defined as the end of ITI
-		'bin_window': 30, #30, (10, 100) # number of trials for estimating the mean and variance of auto-correlation
+		'ITI_max_dur': 2.0, # maximum ITI duration for fixed ITI analysis
+		'pre_stim_period': 0.5, # [s] stimOn_time - pre_stim_period is defined as the end of ITI
+		'bin_window': 30, # (10, 100) # number of trials for estimating the mean and variance of auto-correlation
 		
 		'trait': 'impulsivity',
-		'max_error' : 0.025 # 0.025
+		'max_error' : 0.025 # maximum fitting error
 	}
 	#ITI_behav_timescale_comparison(ITI_full_hy_params, behav_params)
-	#ITI_FR_characteristics(ITI_full_hy_params, behav_params)
+	#plot_FR_characteristics(ITI_full_hy_params, behav_params, 'ITI')
 	#SA_ITI_comparison( SA_hy_params, ITI_full_hy_params, behav_params )
 	#fit_comparison_ITI(ITI_full_hy_params, behav_params)
 	#autocorr_value_plot(ITI_full_hy_params,)
