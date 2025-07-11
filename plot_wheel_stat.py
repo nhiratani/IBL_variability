@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 from pylab import cm
 
 from calc_behav_stats import load_wheel_data
-from behav_analysis import load_data
+from RT_analysis import load_data
 
 from plot_stats_helper import calc_corr, calc_corr_ste
 
@@ -335,7 +335,7 @@ if __name__ == "__main__":
 		'pre_stim_period': 0.5, #0.5, # [s] stimOn_time - pre_stim_period is defined as the end of ITI
 	}
 	
-	raw_data, subject_info = load_data(params['session_type'])
+	raw_data, subject_info = load_data(params['session_type'], one)
 	
-	plot_SA_wheel_stats(raw_data, subject_info, params)
-	#plot_ITI_wheel_stats(raw_data, subject_info, params)
+	#plot_SA_wheel_stats(raw_data, subject_info, params)
+	plot_ITI_wheel_stats(raw_data, subject_info, params)
