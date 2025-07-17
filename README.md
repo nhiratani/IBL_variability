@@ -1,6 +1,8 @@
 # IBL individual variability project
 Analysis codes for IBL individual variability project
 
+Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.664420v1
+
 - RT_analysis.py: Code for RT analysis in Fig. 1
 
 - behav_analysis.py: Code for the analysis of behavioral variability in Fig. 2
