@@ -26,6 +26,29 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 - plot_wheel_stat.py: Code for calculating and plotting the wheel statistics
 
 - - - 
+## System requirement
+- The code is built on [IBL ONE](https://int-brain-lab.github.io/ONE/)
+
+- The code for animal2vec analysis additionally requires [Flax library](https://github.com/google/flax) 
+
+- The code was tested on Rocky Linux 9.0 with the standard CPU and GPU (GeForce RTX 4090). 
+
+- - -
+## Instllation guide
+- Please see [ONE Setup](https://int-brain-lab.github.io/ONE/one_installation.html) for intallation and setup of ONE. 
+
+- - -
+## Demo
+Figures 1 and 2 can be replicated by 
+```
+conda activate <environment_name>
+python behav_analysis.py
+```
+Note that this will download all the behavioral data onto the local cache, requiring a large space and time, depending on the environment.  
+
+You can run it on a small dataset by modifying eids and sess_infos in the load_data function in RT_analysis.py. For instance, with eids = eids[:5]; sess_infos = sess_infos[:5], the analysis is conducted on the first five sessions. 
+
+- - -
 
 - Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL data analysis environment.
 
