@@ -39,14 +39,21 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - - -
 ## Demo
-Figures 1 and 2 can be replicated by 
+Figures 1 and 2 can be replicated by running the following at the folder where you downloaded the code:
 ```
 conda activate <environment_name>
+mkdir bdata_ephys figs
+mkdir figs/figs_behav
+python calc_behav_stats.py
 python behav_analysis.py
 ```
 Note that this will download all the behavioral data onto the local cache, requiring a large space and time, depending on the environment.  
 
-You can run it on a small dataset by modifying eids and sess_infos in the load_data function in RT_analysis.py. For instance, with eids = eids[:5]; sess_infos = sess_infos[:5], the analysis is conducted on the first five sessions. 
+You can run it on a small dataset by modifying eids and sess_infos. For instance, if you add 
+```
+eids = eids[10:20]; sess_infos = sess_infos[10:20]
+```
+to both the process_behav_data function in calc_behav_stats.py and the load_data function in RT_analysis.py, the analysis is conducted only on these ten sessions. The analysis of behavioral data from ten sessions should only take a few minutes. 
 
 - - -
 
