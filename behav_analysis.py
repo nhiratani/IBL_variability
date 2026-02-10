@@ -1064,18 +1064,17 @@ if __name__ == "__main__":
 	}
 
 	raw_data, subject_info = load_data(params['session_type'], one)
-	plot_RT_stats(raw_data, subject_info, params)
-	
-	#plot_RT_stats2(raw_data, subject_info, params)
+	plot_RT_stats(raw_data, subject_info, params) 
+	plot_RT_stats2(raw_data, subject_info, params) 
 	
 	processed_data, subject_data = process_data(raw_data, params)
-	#plot_impulsivity_stats(processed_data, subject_data, subject_info, params)
-	#plot_impulsivity_stats2(subject_data, subject_info, params)
-	#plot_within_animal_variability(processed_data, subject_data, params)
-	#plot_medianRT_stats(processed_data, subject_data, subject_info, params)
+	plot_impulsivity_stats(processed_data, subject_data, subject_info, params) 
+	plot_impulsivity_stats2(subject_data, subject_info, params)
+	plot_within_animal_variability(processed_data, subject_data, params)
+	plot_medianRT_stats(processed_data, subject_data, subject_info, params) 
 
-	#plot_ITI_distributions(raw_data, subject_data, subject_info, params)
-	#plot_psych_RT_stats(raw_data, subject_data, subject_info, params)
+	plot_ITI_distributions(raw_data, subject_data, subject_info, params)
+	plot_psych_RT_stats(raw_data, subject_data, subject_info, params)
 	
-	#psych_curve_variability(processed_data, subject_data, subject_info, params)
-	#fast_slow_freq_stats(processed_data, subject_data, subject_info, params)
+	psych_curve_variability(processed_data, subject_data, subject_info, params)
+	fast_slow_freq_stats(processed_data, subject_data, subject_info, params)
