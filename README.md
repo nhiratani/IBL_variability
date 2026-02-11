@@ -25,6 +25,8 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - plot_wheel_stat.py: Code for calculating and plotting the wheel statistics
 
+- neural_trajectory_analysis.py / calc_neural_trajectory.py / plot_neural_trajectory.py : Code for calculating and plotting within-trial neural trajectory
+
 - - - 
 ## System requirement
 - The code is built on [IBL ONE](https://int-brain-lab.github.io/ONE/)
