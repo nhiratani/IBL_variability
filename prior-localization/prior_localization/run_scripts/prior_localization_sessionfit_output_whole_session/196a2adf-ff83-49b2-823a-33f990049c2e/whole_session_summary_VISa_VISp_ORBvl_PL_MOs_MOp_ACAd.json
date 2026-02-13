@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "196a2adf-ff83-49b2-823a-33f990049c2e",
+    "subject": "KS091",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ACAd",
+    "group": "session",
+    "n_trials_group_used": 557,
+    "r_real": 0.19815307993385067,
+    "r_fake_mean": 0.14470942390230704,
+    "r_fake_std": 0.0768397269348026,
+    "z_corr": 0.6955211602572431,
+    "p_emp": 0.23383084577114427,
+    "r2_real": 0.011032307807779473,
+    "r2_fake_mean": -0.013266574451166113,
+    "r2_fake_std": 0.03524344671049949,
+    "r2_corr": 0.023980739986520356,
+    "z_r2": 0.6894581695866491,
+    "p_emp_r2": 0.20398009950248755,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/196a2adf-ff83-49b2-823a-33f990049c2e/session_fit/KS091/196a2adf-ff83-49b2-823a-33f990049c2e/ACAd_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  }
+]

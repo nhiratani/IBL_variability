@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "n_trials_group_used": 506,
+    "r_real": 0.17461472879864448,
+    "r_fake_mean": 0.07126085644705014,
+    "r_fake_std": 0.07756807602847579,
+    "z_corr": 1.332427947724943,
+    "p_emp": 0.08955223880597014,
+    "r2_real": 0.009497221425868285,
+    "r2_fake_mean": -0.0243311638719962,
+    "r2_fake_std": 0.02555523824510162,
+    "r2_corr": 0.03302485220696828,
+    "z_r2": 1.3237358608600978,
+    "p_emp_r2": 0.1044776119402985,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/88d24c31-52e4-49cc-9f32-6adbeb9eba87/session_fit/SWC_043/88d24c31-52e4-49cc-9f32-6adbeb9eba87/MOp_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "88d24c31-52e4-49cc-9f32-6adbeb9eba87",
+    "subject": "SWC_043",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

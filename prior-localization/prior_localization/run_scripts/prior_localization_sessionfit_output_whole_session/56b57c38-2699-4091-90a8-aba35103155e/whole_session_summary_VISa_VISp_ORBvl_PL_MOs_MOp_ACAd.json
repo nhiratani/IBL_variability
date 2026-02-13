@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISa",
+    "group": "session",
+    "n_trials_group_used": 531,
+    "r_real": 0.2969558087274984,
+    "r_fake_mean": 0.1480855444653108,
+    "r_fake_std": 0.08222879230572336,
+    "z_corr": 1.8104396293295164,
+    "p_emp": 0.05472636815920398,
+    "r2_real": 0.0666534596921674,
+    "r2_fake_mean": -0.024361687367800314,
+    "r2_fake_std": 0.04975620619450635,
+    "r2_corr": 0.08885059660308092,
+    "z_r2": 1.8292220010539473,
+    "p_emp_r2": 0.04975124378109453,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/56b57c38-2699-4091-90a8-aba35103155e/session_fit/SWC_054/56b57c38-2699-4091-90a8-aba35103155e/VISa_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "56b57c38-2699-4091-90a8-aba35103155e",
+    "subject": "SWC_054",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

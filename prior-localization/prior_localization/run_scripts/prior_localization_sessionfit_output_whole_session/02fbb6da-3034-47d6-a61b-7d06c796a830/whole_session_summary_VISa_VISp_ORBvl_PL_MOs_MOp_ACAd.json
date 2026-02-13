@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "n_trials_group_used": 565,
+    "r_real": 0.3673993915618523,
+    "r_fake_mean": 0.3076921894687388,
+    "r_fake_std": 0.08419766904769962,
+    "z_corr": 0.7091312950633851,
+    "p_emp": 0.23880597014925373,
+    "r2_real": 0.12177406065494173,
+    "r2_fake_mean": 0.08263227084967012,
+    "r2_fake_std": 0.056915175663106644,
+    "r2_corr": 0.042667502421874934,
+    "z_r2": 0.6877214969336195,
+    "p_emp_r2": 0.23383084577114427,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/02fbb6da-3034-47d6-a61b-7d06c796a830/session_fit/DY_010/02fbb6da-3034-47d6-a61b-7d06c796a830/VISa_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "02fbb6da-3034-47d6-a61b-7d06c796a830",
+    "subject": "DY_010",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "eid": "bb099402-fb31-4cfd-824e-1c97530a0875",
+    "subject": "UCLA017",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bb099402-fb31-4cfd-824e-1c97530a0875",
+    "subject": "UCLA017",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bb099402-fb31-4cfd-824e-1c97530a0875",
+    "subject": "UCLA017",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

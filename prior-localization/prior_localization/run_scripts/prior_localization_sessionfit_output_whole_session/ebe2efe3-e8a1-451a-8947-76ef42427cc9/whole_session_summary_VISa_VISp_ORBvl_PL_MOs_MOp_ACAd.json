@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOp",
+    "group": "session",
+    "n_trials_group_used": 631,
+    "r_real": 0.2593508905908848,
+    "r_fake_mean": 0.11811142299430923,
+    "r_fake_std": 0.06773177681245152,
+    "z_corr": 2.0852762801080207,
+    "p_emp": 0.01990049751243781,
+    "r2_real": 0.06167203120522491,
+    "r2_fake_mean": 0.0013445188890355085,
+    "r2_fake_std": 0.02278938810854961,
+    "r2_corr": 0.06040873299876895,
+    "z_r2": 2.6471756077363517,
+    "p_emp_r2": 0.01990049751243781,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/ebe2efe3-e8a1-451a-8947-76ef42427cc9/session_fit/NYU-21/ebe2efe3-e8a1-451a-8947-76ef42427cc9/MOp_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "ebe2efe3-e8a1-451a-8947-76ef42427cc9",
+    "subject": "NYU-21",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]
