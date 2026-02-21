@@ -11,9 +11,9 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - model : Code for the mechanistic model in Fig. 4
 
-- plot_neural_stats.py: Code for generating plots in Figs. 5 and 6
+- plot_neural_stats.py: Code for generating plots in Figs. 6 and 7
 
-- plot_stats_helper.py: Helper functions for generating plots in Figs. 5 and 6
+- plot_stats_helper.py: Helper functions for generating plots in Figs. 6 and 7
 
 - data_loading.py: Functions for electrophysiology data loading
 
@@ -25,7 +25,7 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - plot_wheel_stat.py: Code for calculating and plotting the wheel statistics
 
-- neural_trajectory_analysis.py / calc_neural_trajectory.py / plot_neural_trajectory.py : Code for calculating and plotting within-trial neural trajectory
+- neural_trajectory_analysis.py / calc_neural_trajectory.py / plot_neural_trajectory.py : Code for calculating and plotting within-trial neural trajectory depicted in Fig. 5
 
 - - - 
 ## System requirement
