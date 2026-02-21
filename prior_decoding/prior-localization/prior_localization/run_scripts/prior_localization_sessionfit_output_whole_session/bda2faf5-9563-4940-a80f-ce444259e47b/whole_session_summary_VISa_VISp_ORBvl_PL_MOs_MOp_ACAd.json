@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "n_trials_group_used": 502,
+    "r_real": 0.14106838212015965,
+    "r_fake_mean": 0.1073364201738903,
+    "r_fake_std": 0.0666894484847784,
+    "z_corr": 0.5058065812910199,
+    "p_emp": 0.2885572139303483,
+    "r2_real": 0.001349153047931928,
+    "r2_fake_mean": -0.018133080455961636,
+    "r2_fake_std": 0.02987932368058716,
+    "r2_corr": 0.01913525243199899,
+    "z_r2": 0.6520306052493193,
+    "p_emp_r2": 0.19900497512437812,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/bda2faf5-9563-4940-a80f-ce444259e47b/session_fit/UCLA037/bda2faf5-9563-4940-a80f-ce444259e47b/VISp_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "bda2faf5-9563-4940-a80f-ce444259e47b",
+    "subject": "UCLA037",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

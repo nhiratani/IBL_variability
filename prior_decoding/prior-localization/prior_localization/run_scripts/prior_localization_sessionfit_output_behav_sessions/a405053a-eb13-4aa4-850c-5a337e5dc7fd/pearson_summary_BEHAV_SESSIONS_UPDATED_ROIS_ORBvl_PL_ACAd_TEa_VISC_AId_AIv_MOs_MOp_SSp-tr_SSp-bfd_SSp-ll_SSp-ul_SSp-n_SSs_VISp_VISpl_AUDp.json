@@ -1,0 +1,200 @@
+[
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ORBvl",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "PL",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ACAd",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "TEa",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISC",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "AId",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "AIv",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOs",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSp-tr",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSp-bfd",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSp-ll",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSp-ul",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSp-n",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "SSs",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISpl",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "a405053a-eb13-4aa4-850c-5a337e5dc7fd",
+    "subject": "NYU-48",
+    "probe": "['probe00', 'probe01']",
+    "roi": "AUDp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

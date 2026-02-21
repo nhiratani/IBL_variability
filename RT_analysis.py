@@ -7,13 +7,17 @@ import pandas as pd
 
 import numpy as np
 import scipy.stats as scist
+from scipy.optimize import curve_fit
 
 import matplotlib.pyplot as plt
 from pylab import cm
 
+from utilities import anova_from_summary
+
 clr2s = ['#1f77b4', '#ff7f0e', '#2ca02c']
 
 def get_lab_list():
+	# return the list of the labs 
 	lab_list = ['steinmetzlab', 'angelakilab', 'churchlandlab_ucla', 'hausserlab', 'cortexlab', 'mrsicflogellab', 'hoferlab', 'wittenlab', 'mainenlab', 'danlab', 'zadorlab', 'churchlandlab']
 	return lab_list
 
@@ -24,6 +28,7 @@ def calc_contrast(contrastLeft, contrastRight):
 		return -contrastLeft
 
 def calc_contrast_idx(ctmp):
+	# conver signed contrasts (-1, -0.25, ...) into indices (0, 1, ...)
 	contrasts = [-1.0, -0.25, -0.125, -0.0675, 0.0, 0.0675, 0.125, 0.25, 1.0]
 	for cidx in range( len(contrasts) ):
 		if contrasts[cidx] - 0.01 <= ctmp and ctmp <= contrasts[cidx] + 0.01:
@@ -47,7 +52,7 @@ def load_data(session_type, one):
 		session_ids_ephys, sess_infos_ephys = one.search(task_protocol= '_iblrig_tasks_ephysChoiceWorld6.*', details=True)
 		session_ids_biased, sess_infos_biased = one.search(task_protocol= '_iblrig_tasks_biasedChoiceWorld6.*', details=True)
 		session_ids = session_ids_ephys + session_ids_biased
-		
+	
 	data = {}
 	subject_info = {}
 	for idx, (eid, session_info) in enumerate(zip(eids, sess_infos)):
@@ -55,7 +60,7 @@ def load_data(session_type, one):
 			fname = "bdata_ephys/calc_behav_stats_eid" + str(eid) + ".txt"
 		elif session_type == 'all_biased':
 			fname = "bdata_all/calc_trial_stats_eid" + str(eid) + ".txt"
-			
+		
 		if os.path.isfile(fname):
 			lidx = 0
 			for line in open(fname, 'r'):
@@ -104,25 +109,32 @@ def plot_RT_stats(data, subject_info, params):
 	
 	params_str = 'st_' + params['session_type'] + '_mtr' + str(params['min_trials']) + '_fth' + str(params['fast_threshold']) + '_sth' + str(params['slow_threshold'])  + '_sco' + str(params['s_cutoff'])
 	
-	RTs = []
+	# Overall histogram of RT
+	RTs = []; ETs = []
 	sessions_total = 0
 	fast_count = 0; slow_count = 0
 	for subject in data.keys():
 		for sidx in range( len(data[subject]) ):
 			sessions_total += 1
 			RTs.append( data[subject][sidx]['first_movement_onset_times'] - data[subject][sidx]['stimOn_times'] )
+			ETs.append( data[subject][sidx]['feedback_times'] - data[subject][sidx]['stimOn_times'] )
 			fast_count += np.nansum( np.heaviside(fast_threshold - RTs[-1], 0.0) )
 			slow_count += np.nansum( np.heaviside(RTs[-1] - slow_threshold, 0.0) )
 	RTs_total = RTs[0].copy()
 	for i in range(1, len(RTs)):
 		RTs_total = np.concatenate( (RTs_total, RTs[i]) )
+	ETs_total = ETs[0].copy()
+	for i in range(1, len(ETs)):
+		ETs_total = np.concatenate( (ETs_total, ETs[i]) )
 	
 	print('RTs_total:', len(RTs_total), 'sessions_total:', sessions_total)
 	print( 'fast_count:', fast_count, 'slow_count:', slow_count )
+	print( 'ET stat: ', np.nanmedian(ETs_total), len(ETs_total) )
 	
 	plt.style.use('ggplot')
 	plt.rcParams.update({'font.size':16})
 	
+	# Plot RT distribution (focusing on fast-RT part)
 	fig1 = plt.figure(figsize=(5.4, 4.8))
 	plt.hist(RTs_total, range=(-0.3, 1.6), bins=144, color=clr2s[0])
 	plt.axvline(fast_threshold, ls='--', color='r', lw=2.0)
@@ -133,17 +145,19 @@ def plot_RT_stats(data, subject_info, params):
 	
 	RTs_log_total = [ np.log(rt) for rt in RTs_total if rt > 0.05 ]
 	
+	# Plot RT distribution in log-scale (focusing on slow-RT part)
 	fig2 = plt.figure(figsize=(5.4, 4.8))
 	plt.hist(RTs_log_total, bins=144, color=clr2s[0])
 	plt.axvline(np.log(slow_threshold), ls='--', color='r', lw=2.0)
 	
 	plt.xlim(np.log(0.05), np.log(30.0))
-	#print(np.log(0.05), np.log(0.1), np.log(1.0), np.log(10.0)) 
 	plt.xticks([np.log(0.1), np.log(1.0), np.log(10.0)], [0.1, 1.0, 10.0])
 	plt.subplots_adjust(left=0.15, right=0.95)
 	plt.show()
 	fig2.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_slow_RTs_" + params_str + ".pdf" )
 
+
+	# Psychometric functions for normal and early RT groups
 	normal_psychometric = np.zeros((2,9))
 	normal_psychometric_cnt = np.zeros((2,9))
 	fast_psychometric = np.zeros((2,9))
@@ -158,7 +172,10 @@ def plot_RT_stats(data, subject_info, params):
 				block_idx = calc_block_idx(session_data['probLeft'][tridx])
 				if block_idx == 0 or block_idx == 1:
 					if rttmp < fast_threshold:
+						# first movement directions
 						fast_psychometric[block_idx, contrast_idx] += (session_data['first_movement_directions'][tridx] + 1)/2
+						# last movement directions
+						#fast_psychometric[block_idx, contrast_idx] += (session_data['last_movement_directions'][tridx] + 1)/2
 						fast_psychometric_cnt[block_idx, contrast_idx] += 1
 					elif rttmp < slow_threshold:
 						normal_psychometric[block_idx, contrast_idx] += (session_data['first_movement_directions'][tridx] + 1)/2 #1-(session_data['choice'][tridx] + 1)/2
@@ -171,6 +188,17 @@ def plot_RT_stats(data, subject_info, params):
 	normal_psychometric = np.divide(normal_psychometric, normal_psychometric_cnt)
 	np_ones = np.ones( np.shape(normal_psychometric) )
 	np_ste = np.sqrt( np.divide( normal_psychometric*(np_ones - normal_psychometric), normal_psychometric_cnt) )
+	
+	Z_fast = np.divide( fast_psychometric[1] - fast_psychometric[0], np.sqrt(fp_ste[1]*fp_ste[1] + fp_ste[0]*fp_ste[0])) 
+	Z_normal = np.divide( normal_psychometric[1] - normal_psychometric[0], np.sqrt(np_ste[1]*np_ste[1] + np_ste[0]*np_ste[0])) 
+	print( 'Z_fast: ', Z_fast )
+	print( 'Z_normal: ', Z_normal )
+	
+	fp_std = np.sqrt( fast_psychometric*(fp_ones - fast_psychometric) )
+	for bidx in range(2):
+		print( fast_psychometric_cnt[bidx] )
+		fast_stats = anova_from_summary(fast_psychometric[bidx], fp_std[bidx], fast_psychometric_cnt[bidx])
+		print(bidx, fast_stats)
 	
 	contrasts = [-1.0, -0.25, -0.125, -0.0625, 0.0, 0.0625, 0.125, 0.25, 1.0]
 	
@@ -192,6 +220,33 @@ def plot_RT_stats(data, subject_info, params):
 	plt.show()
 	fig3.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_fast_RT_psycho_" + params_str + ".pdf" )
 	
+	
+	# Curve fitting on the psychometric curves
+	from scipy.optimize import curve_fit
+	def fit_psychometric(contrasts, p_right):
+		# Define the logistic function
+		def logistic(x, beta, bias):
+			return 1 / (1 + np.exp(-(beta * x + bias)))
+		
+		# Fit the parameter (p0 : initial guess [beta, bias] )
+		popt, _ = curve_fit(logistic, contrasts, p_right, p0=[10, 0])
+		
+		return popt  # Returns [beta, bias]
+	
+	for bidx in range(1):
+		beta, bias = fit_psychometric(contrasts, fast_psychometric[bidx])
+		print( 'fast', bidx, ', beta: ', beta, ', bias : ', bias )
+		plt.plot( contrasts, 1/(1 + np.exp(-(beta * np.array(contrasts) + bias))), color=clr2s[bidx] )
+	for bidx in range(2):
+		beta, bias = fit_psychometric(contrasts, normal_psychometric[bidx])
+		print( 'fast', bidx, ', beta: ', beta, ', bias : ', bias )
+		plt.plot( contrasts, 1/(1 + np.exp(-(beta * np.array(contrasts) + bias))), color=clr2s[bidx] )
+	plt.show()
+	
+	
+	# RT-dist and correct rate under high and low contrasts
+	fig3 = plt.figure(figsize=(5.4, 4.8))
+	contrasts, fast_psychometric[bidx]
 	RTs_HC = []
 	RTs_HC_incorrect = []
 	RTs_LC = []
@@ -235,7 +290,8 @@ def plot_RT_stats(data, subject_info, params):
 	plt.show()
 	fig5.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_slow_RT_error_rate_" + params_str + ".pdf" )
 	
-
+	
+	# Within session change in fast and slow-RT ratio
 	dT = 0.01
 	relative_session_times = np.arange(0.0, 1.0, dT)
 	rstlen = len(relative_session_times)
@@ -272,6 +328,124 @@ def plot_RT_stats(data, subject_info, params):
 	fig6.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_relative_session_time_" + params_str + ".pdf" )
 	
 	
+	# relative session time: separate statistics for male and female mice
+	dT = 0.01
+	relative_session_times = np.arange(0.0, 1.0, dT)
+	rstlen = len(relative_session_times)
+	rt_counts = {'fast': {'M': np.zeros((rstlen)), 'F': np.zeros((rstlen))},
+				 'slow': {'M': np.zeros((rstlen)), 'F': np.zeros((rstlen))},
+				 'total': {'M': np.zeros((rstlen)), 'F': np.zeros((rstlen))} }
+	
+	dtrial = 100; abstlen = 1600//dtrial
+	abs_rt_counts = {'fast': {'M': np.zeros((abstlen)), 'F': np.zeros((abstlen))},
+				 'slow': {'M': np.zeros((abstlen)), 'F': np.zeros((abstlen))},
+				 'total': {'M': np.zeros((abstlen)), 'F': np.zeros((abstlen))} }
+	
+	for subject in data.keys():
+		sex = subject_info[subject]['sex']
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_len = len(session_data['stimOn_times'])
+			for tridx in range( len(session_data['stimOn_times']) ):
+				ridx = int(np.floor( (tridx/session_len)/dT ))
+				aidx = tridx//dtrial
+				rttmp = session_data['first_movement_onset_times'][tridx] - session_data['stimOn_times'][tridx]
+				rt_counts['total'][sex][ridx] += 1
+				abs_rt_counts['total'][sex][aidx] += 1
+				if rttmp < fast_threshold:
+					rt_counts['fast'][sex][ridx] += 1
+					abs_rt_counts['fast'][sex][aidx] += 1
+				if rttmp >= slow_threshold:
+					rt_counts['slow'][sex][ridx] += 1
+					abs_rt_counts['slow'][sex][aidx] += 1
+	
+	sex_clrs = {'F': 'C0', 'M':'C1'}
+	rt_ratio = {'fast':{}, 'slow':{}}
+	rt_err = {'fast':{}, 'slow':{}}
+	
+	for sex in ('F', 'M'):
+		for RT_type in ('fast', 'slow'):
+			rt_ratio[RT_type][sex] = np.divide(rt_counts[RT_type][sex], rt_counts['total'][sex])
+			rt_err[RT_type][sex] = np.sqrt( np.divide( (1 - rt_ratio[RT_type][sex]) * rt_ratio[RT_type][sex], rt_counts['total'][sex] ) ) 
+	
+	for RT_type in ('fast', 'slow'):
+		fig6b = plt.figure(figsize=(5.4, 4.8))
+		for sex in ('F', 'M'):
+			plt.fill_between(relative_session_times, rt_ratio[RT_type][sex] + rt_err[RT_type][sex], rt_ratio[RT_type][sex] - rt_err[RT_type][sex], alpha=0.25, color=sex_clrs[sex])
+			plt.plot(relative_session_times, rt_ratio[RT_type][sex], color=sex_clrs[sex])
+		plt.xlim(-0.01, 1.01)
+		plt.show()
+		fig6b.savefig( "figs/fig_behav/behav_analysis_plot_" + RT_type + "RT_stats_relative_session_time_M_F_" + params_str + ".pdf" )
+
+
+	# late response time course across lab
+	lab_list = get_lab_list()
+	dT = 0.01; Nlab = len(lab_list)
+	relative_session_times = np.arange(0.0, 1.0, dT)
+	rstlen = len(relative_session_times)
+	lab_rt_counts = {'fast': np.zeros((Nlab, rstlen)), 'slow': np.zeros((Nlab, rstlen)), 'total': np.zeros((Nlab, rstlen)) }
+	
+	for subject in data.keys():
+		lab_name = subject_info[subject]['lab']
+		lab_id = lab_list.index(lab_name)
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_len = len(session_data['stimOn_times'])
+			for tridx in range( len(session_data['stimOn_times']) ):
+				ridx = int(np.floor( (tridx/session_len)/dT ))
+				rttmp = session_data['first_movement_onset_times'][tridx] - session_data['stimOn_times'][tridx]
+				lab_rt_counts['total'][lab_id, ridx] += 1
+				if rttmp < fast_threshold:
+					lab_rt_counts['fast'][lab_id, ridx] += 1
+				if rttmp >= slow_threshold:
+					lab_rt_counts['slow'][lab_id, ridx] += 1
+	
+	climit = 12
+	lab_clrs = []
+	for cidx in range(climit):
+		lab_clrs.append( cm.Paired( (cidx+0.5)/climit ) )
+	#lab_clrs[-1] = 'k'
+	
+	EPS = 1e-6
+	lab_rt_ratio = {'fast':[], 'slow':[]}
+	lab_rt_err = {'fast':[], 'slow':[]}
+	
+	for RT_type in ('fast', 'slow'):
+		lab_rt_ratio[RT_type] = np.divide(lab_rt_counts[RT_type], lab_rt_counts['total']+EPS )
+		lab_rt_err[RT_type] = np.sqrt( np.divide( (1 - lab_rt_ratio[RT_type]) * lab_rt_ratio[RT_type], lab_rt_counts['total']+EPS ) ) 
+	
+	lab_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
+	fig6c = plt.figure(figsize=(5.4, 4.8))
+	for lab_id in range(Nlab):
+		#plt.fill_between(relative_session_times, lab_rt_ratio[RT_type][lab_id,:] + lab_rt_err[RT_type][lab_id,:], \
+		#				lab_rt_ratio[RT_type][lab_id,:] - lab_rt_err[RT_type][lab_id,:], alpha=0.2, color=lab_clrs[lab_id])
+		if lab_id == 11:
+			plt.plot(relative_session_times, lab_rt_ratio[RT_type][lab_id], color=lab_clrs[lab_id], label = lab_names[lab_id], lw=2.5)
+		else:
+			plt.plot(relative_session_times, lab_rt_ratio[RT_type][lab_id], color=lab_clrs[lab_id], label = lab_names[lab_id], alpha=0.67)
+	plt.xlim(-0.01, 1.01)
+	plt.legend()
+	plt.show()
+	fig6c.savefig( "figs/fig_behav/behav_analysis_plot_lateRT_stats_relative_session_time_lab_" + params_str + ".pdf" )
+
+	
+	# Number of trials per session for male and female mice
+	session_length_dist = {'F': [], 'M': []}
+	
+	for subject in data.keys():
+		sex = subject_info[subject]['sex']
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_len = len(session_data['stimOn_times'])
+			session_length_dist[sex].append( session_len )
+	
+	fig6d = plt.figure(figsize=(5.4, 4.8))
+	for sex in ('M', 'F'):
+		plt.hist( session_length_dist[sex], alpha=0.5, color=sex_clrs[sex], range=(0, 1600), bins=16, density=True )
+	plt.axvline(401, color='k', ls='--')
+	plt.show()
+	fig6d.savefig( "figs/fig_behav/behav_analysis_plot_session_length_dist_M_F_" + params_str + ".pdf" )
+	
 	#print( data.keys() )
 	lab_trial_count = {}
 	for subject in data.keys():
@@ -283,6 +457,7 @@ def plot_RT_stats(data, subject_info, params):
 			lab_trial_count[lab]['total'] += len(RTtmp)
 			lab_trial_count[lab]['fast'] += np.nansum( np.heaviside(fast_threshold - RTtmp, 0.0) )
 			lab_trial_count[lab]['slow'] += np.nansum( np.heaviside(RTtmp - slow_threshold, 0.0) )
+	
 	
 	lab_list = get_lab_list()
 	fast_rate = np.zeros((len(lab_list)))
@@ -329,8 +504,6 @@ def plot_RT_stats(data, subject_info, params):
 							if (mdtmp - 0.5)*(mdtmp2 - 0.5) < 0.0:
 								congruent_zero_shot[tridx2-tridx+dT] += 1
 	
-	#print(early_count, congruent_block, congruent_block/early_count)
-	#print(congruent_zero_shot, zero_shot_counts)
 	
 	fast_rt_err = np.sqrt( np.divide(np.multiply( np.ones((rstlen)) - fast_rt_ratio, fast_rt_ratio ), total_rt_counts ) ) 
 	congruent_ratio = np.divide(congruent_zero_shot, zero_shot_counts)
@@ -353,6 +526,12 @@ def plot_RT_stats(data, subject_info, params):
 	normal_change_points = np.zeros((2,9))
 	normal_counts = np.zeros((2,9))
 	
+	# Change points for each block
+	blk_fast_change_points = np.zeros((3,2,9))
+	blk_fast_counts = np.zeros((3,2,9))
+	blk_normal_change_points = np.zeros((3,2,9))
+	blk_normal_counts = np.zeros((3,2,9))
+	
 	for subject in data.keys():
 		for sidx in range( len(data[subject]) ):
 			session_data = data[subject][sidx]
@@ -361,22 +540,34 @@ def plot_RT_stats(data, subject_info, params):
 				contrast_idx = calc_contrast_idx(session_data['contrast'][tridx])
 				block_idx = calc_block_idx(session_data['probLeft'][tridx])
 				fmdtmp = session_data['first_movement_directions'][tridx]
-				#if block_idx == 0 or block_idx == 1:
+				
 				if contrast_idx != 4: #non-zero contrast
-					if fmdtmp* (contrast_idx - 4) > 0.0:
+					if fmdtmp * (contrast_idx - 4) > 0.0:
 						cgidx = 0
 					else:
 						cgidx = 1
 					
 					if rttmp < fast_threshold:
 						fast_counts[cgidx, contrast_idx] += 1
+						blk_fast_counts[block_idx, cgidx, contrast_idx] += 1
 						if fmdtmp != session_data['last_movement_directions'][tridx]:
 							fast_change_points[cgidx, contrast_idx] += 1
+							blk_fast_change_points[block_idx, cgidx, contrast_idx] += 1
+							
 							
 					elif rttmp < slow_threshold:
 						normal_counts[cgidx, contrast_idx] += 1
+						blk_normal_counts[block_idx, cgidx, contrast_idx] += 1
 						if fmdtmp != session_data['last_movement_directions'][tridx]:
 							normal_change_points[cgidx, contrast_idx] += 1
+							blk_normal_change_points[block_idx, cgidx, contrast_idx] += 1
+							
+	
+	print('fast_counts', fast_counts)
+	print('fast_change_points', np.sum(fast_change_points, axis=1))
+	print('normal_change_points', np.sum(normal_change_points, axis=1))
+	#print('normal_counts', np.sum(normal_counts, axis=1))
+
 	
 	cg_clrs = ['g', 'y']
 	fast_change_points = np.divide(fast_change_points, fast_counts) 
@@ -401,7 +592,156 @@ def plot_RT_stats(data, subject_info, params):
 	plt.xticks([-1.0, 0.0, 1.0])
 	plt.show()
 	fig9.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_early_normal_change_of_mind_ratio_" + params_str + ".pdf" )
+	
+	
+	# block-wise statistics of change of mind
+	blk_fast_change_points = np.divide(blk_fast_change_points, blk_fast_counts) 
+	blk_fcp_err = np.sqrt( np.divide( np.multiply( 1 - blk_fast_change_points, blk_fast_change_points ), blk_fast_counts ) )
+	
+	block_clrs = [clr2s[0], clr2s[1], 'gray'] #(cyan, orange, gray)
+	fig10 = plt.figure(figsize=(5.4, 4.8))
+	plt.subplot(1,2,1)
+	for block_idx in range(2):
+		print( block_idx, np.sum(blk_fast_counts[block_idx,:,:4]), np.sum(blk_fast_counts[block_idx,:,5:]) )
+		
+		#print( block_idx, np.sum(blk_normal_counts[block_idx,:,:4]), np.sum(blk_normal_counts[block_idx,:,5:]) )
+		plt.fill_between( contrasts, blk_fast_change_points[block_idx, 1, :] + blk_fcp_err[block_idx, 1, :], 
+							blk_fast_change_points[block_idx, 1, :] - blk_fcp_err[block_idx, 1, :], color=block_clrs[block_idx], alpha=0.25 )
+	
+		if block_idx == 0:
+			plt.plot( contrasts[:4], blk_fast_change_points[block_idx, 1, :4], 's-', color=block_clrs[block_idx] , markerfacecolor='white' )
+			plt.plot( contrasts[5:], blk_fast_change_points[block_idx, 1, 5:], 'o-', color=block_clrs[block_idx] )
+		else:
+			plt.plot( contrasts[:4], blk_fast_change_points[block_idx, 1, :4], 'o-', color=block_clrs[block_idx] )
+			plt.plot( contrasts[5:], blk_fast_change_points[block_idx, 1, 5:], 's-', color=block_clrs[block_idx] , markerfacecolor='white' )
+			
+	plt.ylim(0.0, 0.35)
+	
+	blk_normal_change_points = np.divide(blk_normal_change_points, blk_normal_counts) 
+	blk_ncp_err = np.sqrt( np.divide( np.multiply( 1 - blk_normal_change_points, blk_normal_change_points ), blk_normal_counts ) )
+		
+	plt.subplot(1,2,2)
+	for block_idx in range(2):
+		print( block_idx, np.sum(blk_normal_counts[block_idx,:,:4]), np.sum(blk_normal_counts[block_idx,:,5:]) )
+		plt.fill_between( contrasts, blk_normal_change_points[block_idx, 1, :] + blk_ncp_err[block_idx, 1, :], 
+							blk_normal_change_points[block_idx, 1, :] - blk_ncp_err[block_idx, 1, :], color=block_clrs[block_idx], alpha=0.25 )
+		if block_idx == 0:
+			plt.plot( contrasts[:4], blk_normal_change_points[block_idx, 1, :4], 's-', color=block_clrs[block_idx] , markerfacecolor='white' )
+			plt.plot( contrasts[5:], blk_normal_change_points[block_idx, 1, 5:], 'o-', color=block_clrs[block_idx] )
+		else:
+			plt.plot( contrasts[:4], blk_normal_change_points[block_idx, 1, :4], 'o-', color=block_clrs[block_idx] )
+			plt.plot( contrasts[5:], blk_normal_change_points[block_idx, 1, 5:], 's-', color=block_clrs[block_idx] , markerfacecolor='white' )
+	plt.ylim(0.0, 0.35)
+	#plt.yticks([])
+	
+	#plt.subplots_adjust(left=0.15, right=0.95)
+	plt.show()
+	fig10.savefig( "figs/fig_behav/behav_analysis_plot_RT_stats_early_normal_change_of_mind_ratio_incong_blk_" + params_str + ".pdf" )
 
+
+
+# additional RT analyses
+def plot_RT_stats2(data, subject_info, params):
+	fast_threshold = params['fast_threshold']
+	slow_threshold = params['slow_threshold']
+	s_cutoff = params['s_cutoff']
+	
+	params_str = 'st_' + params['session_type'] + '_mtr' + str(params['min_trials']) + '_fth' + str(params['fast_threshold']) + '_sth' + str(params['slow_threshold'])  + '_sco' + str(params['s_cutoff'])
+
+	# Reaction time distributions following rewarded and unrewarded trials
+	RT_post_rewards = {'full': [], 'cutoff': []}
+	RT_post_non_rewards = {'full': [], 'cutoff': []}
+	for subject in data.keys():
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_length = len(session_data['stimOn_times'])
+			for tridx in range( 1, len(session_data['stimOn_times']) ):
+				rttmp = session_data['first_movement_onset_times'][tridx] - session_data['stimOn_times'][tridx]
+				if np.isfinite(rttmp):
+					if session_data['feedbackType'][tridx-1] >= 0.0:
+						RT_post_rewards['full'].append( rttmp )
+						if tridx < session_length - s_cutoff:
+							RT_post_rewards['cutoff'].append( rttmp )
+					else:
+						RT_post_non_rewards['full'].append( rttmp )
+						if tridx < session_length - s_cutoff:
+							RT_post_non_rewards['cutoff'].append( rttmp )
+	
+	print( np.nanmedian(RT_post_rewards['full']), np.nanmedian(RT_post_non_rewards['full']))
+	u_stat, p_val_u = scist.mannwhitneyu(RT_post_rewards['full'], RT_post_non_rewards['full'])
+	print( 'post reward vs non reward (Rank-sum) : u-stat:', u_stat, ', p_value:', p_val_u)
+	
+	plt.style.use('ggplot')
+	plt.rcParams.update({'font.size':16})
+	
+	fig1 = plt.figure(figsize=(5.4, 4.8))
+	RTmin = -0.3
+	RTmax = 3.0
+	plt.hist(RT_post_rewards['full'], color='r', alpha=0.5, range=(RTmin, RTmax), bins=100, density=True)
+	plt.hist(RT_post_non_rewards['full'], color='b', alpha=0.5, range=(RTmin, RTmax), bins=100, density=True)
+	plt.xlim(-0.3, 3.0)
+	plt.show()
+	
+	fig1.savefig( "figs/fig_behav/behav_analysis_plot_RT_hist_post_reward_no_cutoff_" + params_str + ".pdf" )
+	
+	
+	# Performance as a function of RT type
+	perf_contrasts = {'early': np.zeros((9)), 'normal': np.zeros((9)), 'late': np.zeros((9))}
+	perf_counts = {'early': np.zeros((9)), 'normal': np.zeros((9)), 'late': np.zeros((9))}
+	for subject in data.keys():
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_length = len(session_data['stimOn_times'])
+			for tridx in range( len(session_data['stimOn_times']) ):
+				rttmp = session_data['first_movement_onset_times'][tridx] - session_data['stimOn_times'][tridx]
+				if np.isfinite(rttmp):
+					contrast_idx = calc_contrast_idx(session_data['contrast'][tridx])
+					RT_type = ''
+					if rttmp < fast_threshold:
+						RT_type = 'early'
+					elif rttmp > slow_threshold:
+						RT_type = 'late'
+					else:
+						RT_type = 'normal'
+					perf_counts[RT_type][contrast_idx] += 1
+					if session_data['feedbackType'][tridx] > 0.0:
+						perf_contrasts[RT_type][contrast_idx] += 1
+
+	mean_perfs = {}; ste_perfs = {}
+	for RT_type in perf_contrasts.keys():
+		mean_perfs[RT_type] = np.divide( perf_contrasts[RT_type], perf_counts[RT_type] )
+		ste_perfs[RT_type] = np.divide( mean_perfs[RT_type] * (1-mean_perfs[RT_type]), perf_counts[RT_type] )
+	
+	fig2 = plt.figure(figsize=(5.4, 4.8))
+	contrasts = [-1.0, -0.25, -0.125, -0.0675, 0.0, 0.0675, 0.125, 0.25, 1.0]
+	
+	RT_type_colors = {'early':'y', 'normal':'k', 'late':'m'}
+	for RT_type in perf_contrasts.keys():
+		plt.fill_between(contrasts, mean_perfs[RT_type]+ste_perfs[RT_type], mean_perfs[RT_type]-ste_perfs[RT_type], color=RT_type_colors[RT_type])
+		plt.plot(contrasts, mean_perfs[RT_type], 'o-', color=RT_type_colors[RT_type])
+	plt.ylim(0.5, 1.0)
+	plt.show()
+	
+	fig2.savefig( "figs/fig_behav/behav_analysis_plot_perf_RT_type_dep_no_cutoff_" + params_str + ".pdf" )
+	
+	
+	# Session length statistics
+	session_length_stats = []
+	for subject in data.keys():
+		for sidx in range( len(data[subject]) ):
+			session_data = data[subject][sidx]
+			session_length = len(session_data['stimOn_times'])
+			if session_length > params['min_trials']:
+				session_length_stats.append(session_length)
+	
+	session_length_stats = np.array(session_length_stats)
+	print( np.nanmin(session_length_stats) )
+	print( np.nanmax(session_length_stats) )
+	print( np.nanmean(session_length_stats) )
+	print( np.nanmedian(session_length_stats) )
+	
+	
+	
 
 # Calculate and plot ITI distribution and its correlation with task behaviors
 def plot_ITI_distributions(raw_data, subject_data, subject_info, params):
@@ -429,11 +769,38 @@ def plot_ITI_distributions(raw_data, subject_data, subject_info, params):
 			trial_wise_ITI_dist['early'].extend( ITI_hist[ np.where( RTs < fast_threshold ) ] )
 			trial_wise_ITI_dist['normal'].extend( ITI_hist[ np.where( (RTs >= fast_threshold) & (RTs <= slow_threshold) ) ] )
 			trial_wise_ITI_dist['late'].extend( ITI_hist[ np.where( RTs > slow_threshold ) ] )
-		
-	fig1 = plt.figure(figsize=(5.4, 4.8))
+	
+	from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes, mark_inset
+	fig1, ax = plt.subplots(figsize=(5.4, 4.8))
+	#fig1 = plt.figure(figsize=(5.4, 4.8))
 	clr3s = ['m', 'k', 'y']
+	#for tridx, trait in enumerate(['late', 'normal', 'early']):
+	#	ax.hist(trial_wise_ITI_dist[trait], range=(0.0, 9.0), density=True, bins=100, histtype='step', linewidth=2.0, edgecolor=clr3s[tridx], label=trait)
+
 	for tridx, trait in enumerate(['late', 'normal', 'early']):
-		plt.hist(trial_wise_ITI_dist[trait], range=(0.0,9.0), density=True, bins=100, histtype='step', linewidth=2.0, edgecolor=clr3s[tridx] )
+		ax.hist(trial_wise_ITI_dist[trait], range=(0.0, 9.0), density=True, 
+				bins=100, histtype='step', linewidth=2.0, edgecolor=clr3s[tridx], label=trait)
+
+	# zoom=2.5 means the inset will be 2.5x the size of the area it's magnifying
+	# loc=1 places it in the upper right corner
+	axins = zoomed_inset_axes(ax, zoom=2.0, loc=1) 
+	
+	# Re-plot the data on the inset axis
+	for tridx, trait in enumerate(['late', 'normal', 'early']):
+		axins.hist(trial_wise_ITI_dist[trait], range=(0.0, 9.0), density=True, bins=100, histtype='step', linewidth=2.0, edgecolor=clr3s[tridx])
+	
+	# Define the region to zoom in on (your specified coordinates)
+	x1, x2, y1, y2 = 2.5, 5, 0.0, 0.4
+	axins.set_xlim(x1, x2)
+	axins.set_ylim(y1, y2)
+
+	# emove tick labels from the inset to keep it clean
+	axins.set_xticks([])
+	axins.set_yticks([])
+
+	# Draw the "connector lines" from the main plot to the inset
+	mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
+	
 	plt.show()
 	fig1.savefig('figs/fig_behav/trial_wise_ITI_distributions_impul_types_' + params_str + '.pdf')		
 	

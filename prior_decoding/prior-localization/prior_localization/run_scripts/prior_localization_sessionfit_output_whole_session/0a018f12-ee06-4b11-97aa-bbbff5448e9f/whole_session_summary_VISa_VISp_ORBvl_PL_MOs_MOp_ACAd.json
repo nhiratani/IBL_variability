@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "n_trials_group_used": 436,
+    "r_real": 0.1962677034439791,
+    "r_fake_mean": 0.2052841088079308,
+    "r_fake_std": 0.08258583891604755,
+    "z_corr": -0.10917616727387505,
+    "p_emp": 0.6069651741293532,
+    "r2_real": 0.007706543680349398,
+    "r2_fake_mean": 0.01186221362333885,
+    "r2_fake_std": 0.04423464380863538,
+    "r2_corr": -0.004205557160431654,
+    "z_r2": -0.09394604737787425,
+    "p_emp_r2": 0.5373134328358209,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/0a018f12-ee06-4b11-97aa-bbbff5448e9f/session_fit/KS051/0a018f12-ee06-4b11-97aa-bbbff5448e9f/VISa_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "0a018f12-ee06-4b11-97aa-bbbff5448e9f",
+    "subject": "KS051",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

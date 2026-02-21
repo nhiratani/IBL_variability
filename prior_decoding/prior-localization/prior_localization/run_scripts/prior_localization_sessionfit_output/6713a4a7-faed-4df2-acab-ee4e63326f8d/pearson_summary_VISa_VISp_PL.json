@@ -1,0 +1,35 @@
+[
+  {
+    "eid": "6713a4a7-faed-4df2-acab-ee4e63326f8d",
+    "subject": "NYU-11",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "6713a4a7-faed-4df2-acab-ee4e63326f8d",
+    "subject": "NYU-11",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "6713a4a7-faed-4df2-acab-ee4e63326f8d",
+    "subject": "NYU-11",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "TEa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISC",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "AId",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "AIv",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSp-tr",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSp-bfd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSp-ll",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSp-ul",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSp-n",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "SSs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISpl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ff96bfe1-d925-4553-94b5-bf8297adf259",
+    "subject": "ibl_witten_26",
+    "probe": "['probe01', 'probe00']",
+    "roi": "AUDp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

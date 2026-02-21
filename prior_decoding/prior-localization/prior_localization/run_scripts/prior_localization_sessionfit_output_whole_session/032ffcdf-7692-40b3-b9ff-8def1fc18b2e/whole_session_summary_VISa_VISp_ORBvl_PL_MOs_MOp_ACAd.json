@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "n_trials_group_used": 514,
+    "r_real": 0.035697766015707386,
+    "r_fake_mean": 0.08561395045100399,
+    "r_fake_std": 0.07542537953522577,
+    "z_corr": -0.6617956017309048,
+    "p_emp": 0.7960199004975125,
+    "r2_real": -0.020905412082980468,
+    "r2_fake_mean": -0.006813657615215122,
+    "r2_fake_std": 0.02020712619696184,
+    "r2_corr": -0.01399638787294932,
+    "z_r2": -0.6973655892684063,
+    "p_emp_r2": 0.7661691542288557,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/032ffcdf-7692-40b3-b9ff-8def1fc18b2e/session_fit/NYU-12/032ffcdf-7692-40b3-b9ff-8def1fc18b2e/VISp_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "032ffcdf-7692-40b3-b9ff-8def1fc18b2e",
+    "subject": "NYU-12",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

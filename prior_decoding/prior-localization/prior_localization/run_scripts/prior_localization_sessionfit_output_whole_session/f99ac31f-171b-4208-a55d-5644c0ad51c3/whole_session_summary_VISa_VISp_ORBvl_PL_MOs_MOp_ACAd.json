@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "PL",
+    "group": "session",
+    "n_trials_group_used": 703,
+    "r_real": 0.5284826241449574,
+    "r_fake_mean": 0.301283755807894,
+    "r_fake_std": 0.0729419361591063,
+    "z_corr": 3.114790754134639,
+    "p_emp": 0.009950248756218905,
+    "r2_real": 0.2605248626538596,
+    "r2_fake_mean": 0.05354526535457531,
+    "r2_fake_std": 0.057647606503437185,
+    "r2_corr": 0.2186893780787373,
+    "z_r2": 3.5904282910157477,
+    "p_emp_r2": 0.009950248756218905,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/f99ac31f-171b-4208-a55d-5644c0ad51c3/session_fit/UCLA035/f99ac31f-171b-4208-a55d-5644c0ad51c3/PL_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "f99ac31f-171b-4208-a55d-5644c0ad51c3",
+    "subject": "UCLA035",
+    "probe": "['probe00', 'probe01']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

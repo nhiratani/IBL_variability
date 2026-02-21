@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "n_trials_group_used": 488,
+    "r_real": 0.35244378299218193,
+    "r_fake_mean": 0.32800489147829487,
+    "r_fake_std": 0.09174931137467728,
+    "z_corr": 0.26636593940292147,
+    "p_emp": 0.4228855721393035,
+    "r2_real": 0.11297738274242097,
+    "r2_fake_mean": 0.10050628364207675,
+    "r2_fake_std": 0.06563064224041243,
+    "r2_corr": 0.013864576120487054,
+    "z_r2": 0.19001945851240004,
+    "p_emp_r2": 0.4129353233830846,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/36280321-555b-446d-9b7d-c2e17991e090/session_fit/DY_011/36280321-555b-446d-9b7d-c2e17991e090/MOp_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "36280321-555b-446d-9b7d-c2e17991e090",
+    "subject": "DY_011",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]
