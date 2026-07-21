@@ -41,13 +41,11 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - - -
 ## Demo
-Figures 1 and 2 can be replicated by running the following at the folder where you downloaded the code:
+Figures 1 can be replicated by running the following at the folder where you downloaded the code:
 ```
-conda activate <environment_name>
-mkdir bdata_ephys figs
-mkdir figs/figs_behav
-python calc_behav_stats.py
-python behav_analysis.py
+conda env create -f ibl_var.yml
+conda activate ibl_var_env
+python demo.py
 ```
 Note that this will download all the behavioral data onto the local cache, requiring a large space and time, depending on the environment.  
 
