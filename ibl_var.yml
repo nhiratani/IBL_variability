@@ -1,0 +1,28 @@
+name: ibl_var_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12.5
+  - pip
+  - pip:
+    # Standard Data Science & Plotting
+    - numpy==1.26.4
+    - pandas==2.2.3
+    - scipy==1.14.1
+    - matplotlib==3.9.2
+    - seaborn==0.13.2
+    - statsmodels==0.14.4
+    
+    # Core Utilities
+    - requests==2.32.3
+    
+    # International Brain Laboratory (IBL) Tools
+    - one-api==2.11.2
+    - iblatlas==0.5.6
+    - ibllib==3.2.0
+    
+    # Neurophysiology Tools
+    - quantities==0.16.2
+    - neo==0.14.3
+    - elephant==1.1.1

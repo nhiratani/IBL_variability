@@ -1,0 +1,35 @@
+[
+  {
+    "eid": "5b44c40f-80f4-44fb-abfb-c7f19e27a6ca",
+    "subject": "CSH_ZAD_011",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISa",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "5b44c40f-80f4-44fb-abfb-c7f19e27a6ca",
+    "subject": "CSH_ZAD_011",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "5b44c40f-80f4-44fb-abfb-c7f19e27a6ca",
+    "subject": "CSH_ZAD_011",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

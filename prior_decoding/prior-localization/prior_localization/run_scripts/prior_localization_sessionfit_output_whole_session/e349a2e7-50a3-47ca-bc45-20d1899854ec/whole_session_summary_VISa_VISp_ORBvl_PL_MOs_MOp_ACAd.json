@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "n_trials_group_used": 982,
+    "r_real": 0.0456796955655446,
+    "r_fake_mean": 0.08307358082523746,
+    "r_fake_std": 0.050800946784733673,
+    "z_corr": -0.7360863847311246,
+    "p_emp": 0.7810945273631841,
+    "r2_real": -0.03845761125980618,
+    "r2_fake_mean": -0.024613273091385182,
+    "r2_fake_std": 0.017416825747760052,
+    "r2_corr": -0.013511769300675672,
+    "z_r2": -0.7948829694298052,
+    "p_emp_r2": 0.8059701492537313,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/e349a2e7-50a3-47ca-bc45-20d1899854ec/session_fit/CSH_ZAD_029/e349a2e7-50a3-47ca-bc45-20d1899854ec/VISp_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "e349a2e7-50a3-47ca-bc45-20d1899854ec",
+    "subject": "CSH_ZAD_029",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

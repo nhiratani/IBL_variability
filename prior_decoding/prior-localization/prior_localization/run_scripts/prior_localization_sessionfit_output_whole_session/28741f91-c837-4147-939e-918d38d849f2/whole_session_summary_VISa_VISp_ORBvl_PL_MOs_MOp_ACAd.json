@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "28741f91-c837-4147-939e-918d38d849f2",
+    "subject": "CSHL058",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "n_trials_group_used": 357,
+    "r_real": 0.10349627628005352,
+    "r_fake_mean": 0.24222454172351385,
+    "r_fake_std": 0.09759423441406892,
+    "z_corr": -1.421480134316845,
+    "p_emp": 0.9253731343283582,
+    "r2_real": -0.1032615769083467,
+    "r2_fake_mean": 0.00438180448971247,
+    "r2_fake_std": 0.07668619614681235,
+    "r2_corr": -0.10811712952161179,
+    "z_r2": -1.4036865408212535,
+    "p_emp_r2": 0.9353233830845771,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/28741f91-c837-4147-939e-918d38d849f2/session_fit/CSHL058/28741f91-c837-4147-939e-918d38d849f2/ACAd_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  }
+]

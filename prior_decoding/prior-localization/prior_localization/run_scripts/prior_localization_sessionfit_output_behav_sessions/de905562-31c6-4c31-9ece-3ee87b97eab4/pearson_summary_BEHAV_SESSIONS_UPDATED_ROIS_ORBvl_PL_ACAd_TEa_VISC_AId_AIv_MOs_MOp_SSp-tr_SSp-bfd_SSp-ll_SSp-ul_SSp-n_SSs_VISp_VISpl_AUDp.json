@@ -1,0 +1,200 @@
+[
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "ORBvl",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "PL",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "ACAd",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "TEa",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "VISC",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "AId",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "AIv",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "MOs",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "MOp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSp-tr",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSp-bfd",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSp-ll",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSp-ul",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSp-n",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "SSs",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "VISp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "VISpl",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "de905562-31c6-4c31-9ece-3ee87b97eab4",
+    "subject": "NR_0029",
+    "probe": "['probe00b']",
+    "roi": "AUDp",
+    "group": null,
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "n_trials_group_used": 564,
+    "r_real": 0.24099489973684313,
+    "r_fake_mean": 0.15889932280719407,
+    "r_fake_std": 0.06833846550392822,
+    "z_corr": 1.2013084625807124,
+    "p_emp": 0.12437810945273632,
+    "r2_real": 0.041371044716048966,
+    "r2_fake_mean": 0.005889752412015221,
+    "r2_fake_std": 0.02942593987979063,
+    "r2_corr": 0.03569150644017824,
+    "z_r2": 1.2057828041850196,
+    "p_emp_r2": 0.13432835820895522,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/c99d53e6-c317-4c53-99ba-070b26673ac4/session_fit/CSHL049/c99d53e6-c317-4c53-99ba-070b26673ac4/VISa_['probe00']_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "c99d53e6-c317-4c53-99ba-070b26673ac4",
+    "subject": "CSHL049",
+    "probe": "['probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]

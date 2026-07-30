@@ -1,0 +1,90 @@
+[
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISa",
+    "group": "session",
+    "n_trials_group_used": 930,
+    "r_real": 0.25998743565525884,
+    "r_fake_mean": 0.22455780510223394,
+    "r_fake_std": 0.06078870689975761,
+    "z_corr": 0.5828324430629757,
+    "p_emp": 0.31840796019900497,
+    "r2_real": 0.0498406978482453,
+    "r2_fake_mean": 0.03193700457854894,
+    "r2_fake_std": 0.03414000535456077,
+    "r2_corr": 0.018494347324888596,
+    "z_r2": 0.5244197557603663,
+    "p_emp_r2": 0.31840796019900497,
+    "drop_last_n": 40,
+    "roi_pkl_path": "prior_localization_sessionfit_output_whole_session/ee40aece-cffd-4edb-a4b6-155f158c666a/session_fit/ZM_2241/ee40aece-cffd-4edb-a4b6-155f158c666a/VISa_merged_probes_pseudo_ids_-1_200_session.pkl",
+    "status": "ok"
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "VISp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ORBvl",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "PL",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOs",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "MOp",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  },
+  {
+    "eid": "ee40aece-cffd-4edb-a4b6-155f158c666a",
+    "subject": "ZM_2241",
+    "probe": "['probe01', 'probe00']",
+    "roi": "ACAd",
+    "group": "session",
+    "status": "skip_no_roi",
+    "n_trials_group_used": 0,
+    "drop_last_n": 40,
+    "roi_pkl_path": null
+  }
+]
