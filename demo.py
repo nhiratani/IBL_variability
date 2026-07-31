@@ -2,8 +2,7 @@
 # demo.py
 #
 # End-to-end demo: loads the IBL ephys behavioral data and renders a single
-# figure with the key behavioral panels used in the paper, arranged in a
-# 2x4 grid (eight axes, fully populated).
+# figure with the key behavioral panels used in the paper
 #
 # Each panel faithfully reproduces a snippet of the existing plotting code, but
 # drawn onto shared axes (ax.* calls) instead of separate figures:
@@ -17,14 +16,13 @@
 #   [1,2] Fast/slow ratio vs session time      <- RT_analysis.plot_RT_stats       L223-L230
 #   [1,3] RT-type conditional probability      <- behav_analysis.fast_slow_freq_stats L1008-L1027
 #
-# Hyperparameters match behav_analysis.py's __main__ block.
 #
 import os
 import numpy as np
 import scipy.stats as scist
 import matplotlib.pyplot as plt
 
-from data_loading import load_data, one
+from util.data_loading import load_data, one
 from RT_analysis import calc_contrast_idx, calc_block_idx
 from behav_analysis import process_data
 

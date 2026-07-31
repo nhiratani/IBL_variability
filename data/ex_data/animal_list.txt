@@ -1,0 +1,170 @@
+Steinmetz lab (Noam Roth)
+NR_0029 steinmetzlab
+NR_0031 steinmetzlab
+NR_0028 steinmetzlab
+NR_0024 steinmetzlab
+NR_0027 steinmetzlab
+NR_0021 steinmetzlab
+NR_0020 steinmetzlab
+NR_0019 steinmetzlab
+NR_0017 steinmetzlab
+
+
+CSHL Chuchland lab (Anne Urai)
+CSHL058 churchlandlab
+CSHL060 churchlandlab
+CSHL052 churchlandlab
+CSHL055 churchlandlab
+CSHL051 churchlandlab
+CSHL053 churchlandlab
+CSHL049 churchlandlab
+CSHL047 churchlandlab
+CSHL059 churchlandlab
+CSHL045 churchlandlab
+CSHL054 churchlandlab
+
+
+
+Churchland lab (UCLA)
+UCLA048 churchlandlab_ucla
+UCLA049 churchlandlab_ucla
+UCLA052 churchlandlab_ucla
+UCLA036 churchlandlab_ucla
+UCLA035 churchlandlab_ucla
+UCLA033 churchlandlab_ucla
+UCLA037 churchlandlab_ucla
+UCLA034 churchlandlab_ucla
+UCLA017 churchlandlab_ucla
+UCLA014 churchlandlab_ucla
+UCLA005 churchlandlab_ucla
+UCLA011 churchlandlab_ucla
+UCLA012 churchlandlab_ucla
+UCLA044 churchlandlab_ucla
+UCLA015 churchlandlab_ucla
+UCLA030 churchlandlab_ucla
+UCLA006 churchlandlab_ucla
+
+
+Angelaki lab ()
+NYU-12 angelakilab
+NYU-65 angelakilab
+NYU-45 angelakilab
+NYU-48 angelakilab
+NYU-47 angelakilab
+NYU-46 angelakilab
+NYU-40 angelakilab
+NYU-39 angelakilab
+NYU-37 angelakilab
+NYU-30 angelakilab
+NYU-29 angelakilab
+NYU-26 angelakilab
+NYU-21 angelakilab
+NYU-11 angelakilab
+
+Hausser lab (Petrina Lau)
+PL015 hausserlab
+PL016 hausserlab
+PL024 hausserlab
+PL017 hausserlab
+
+Cortex lab (Karolina Socha)
+KS020 cortexlab
+KS023 cortexlab
+KS022 cortexlab
+KS016 cortexlab
+KS014 cortexlab
+KS091 cortexlab
+KS096 cortexlab
+KS094 cortexlab
+KS052 cortexlab
+KS051 cortexlab
+KS055 cortexlab
+KS089 cortexlab
+KS086 cortexlab
+KS045 cortexlab
+KS044 cortexlab
+KS043 cortexlab
+KS046 cortexlab
+KS042 cortexlab
+
+
+SWC_023 mrsicflogellab
+SWC_065 mrsicflogellab
+SWC_058 mrsicflogellab
+SWC_053 mrsicflogellab
+SWC_052 mrsicflogellab
+SWC_054 mrsicflogellab
+SWC_039 mrsicflogellab
+SWC_038 mrsicflogellab
+
+SWC_066 hoferlab
+SWC_061 hoferlab
+SWC_060 hoferlab
+SWC_043 hoferlab
+SWC_014 hoferlab
+SWC_042 hoferlab
+
+
+
+ibl_witten_13 wittenlab
+ibl_witten_32 wittenlab
+ibl_witten_29 wittenlab
+ibl_witten_26 wittenlab
+ibl_witten_27 wittenlab
+ibl_witten_25 wittenlab
+ibl_witten_20 wittenlab
+ibl_witten_18 wittenlab
+ibl_witten_17 wittenlab
+ibl_witten_19 wittenlab
+
+
+ZM_2241 mainenlab
+ZM_2240 mainenlab
+ZM_2245 mainenlab
+ZM_1898 mainenlab
+ZM_1897 mainenlab
+ZM_3001 mainenlab
+ZM_3003 mainenlab
+ZFM-02373 mainenlab
+ZFM-02372 mainenlab
+ZFM-02368 mainenlab
+ZFM-02369 mainenlab
+ZFM-02370 mainenlab
+ZFM-01937 mainenlab
+ZFM-01935 mainenlab
+ZFM-01936 mainenlab
+ZFM-01577 mainenlab
+ZFM-01592 mainenlab
+ZFM-01576 mainenlab
+
+
+DY_010 danlab
+DY_011 danlab
+DY_013 danlab
+DY_009 danlab
+DY_008 danlab
+DY_018 danlab
+DY_020 danlab
+DY_016 danlab
+DY_014 danlab
+
+
+CSH_ZAD_029 zadorlab
+CSH_ZAD_026 zadorlab
+CSH_ZAD_019 zadorlab
+CSH_ZAD_024 zadorlab
+CSH_ZAD_022 zadorlab
+CSH_ZAD_011 zadorlab
+CSH_ZAD_025 zadorlab
+CSH_ZAD_001 zadorlab
+
+
+
+
+
+
+
+
+
+
+

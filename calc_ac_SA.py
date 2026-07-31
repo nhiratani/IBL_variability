@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 
 import matplotlib.pyplot as plt
 
-from data_loading import classify_acronym, get_behavioral_stats
+from util.data_loading import classify_acronym, get_behavioral_stats
 from behav_analysis import load_data
 
 #import matplotlib.pyplot as plt

@@ -1,5 +1,5 @@
 #
-# Compare behavioral and neural results and plot 
+# Compare behavioral and neural results and plot
 #
 from math import *
 import sys
@@ -15,8 +15,8 @@ from os import path
 import matplotlib.pyplot as plt
 
 from behav_analysis import load_data, process_data
-from coloring import colorize_svg, colorize_and_label_svg
-from ac_fitting import double_exp_model_zph, double_exp_model_non_osci
+from ac_util.coloring import colorize_svg, colorize_and_label_svg
+from ac_util.ac_fitting import double_exp_model_zph, double_exp_model_non_osci
 
 from plot_stats_helper import load_ac_behav_data, load_neuronwise_ac_data, load_animal_embedding, region_of_interests_and_division, calc_perm_significance, calc_tau2, calc_perm_diff, calc_corr, calc_corr_ste, load_tau_error_dists, get_acf_values, deming_regression
 
@@ -33,7 +33,7 @@ def load_animal_embedding():
     for line in open(fstr, 'r'):
         ltmps = line.split(' ')
         pc1_dict[ltmps[0]] = float(ltmps[1])
-    #print(pc1_dict)
+    
     return pc1_dict
 
 
@@ -77,7 +77,6 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
             xs = np.arange( 0.0, np.max(xdivs), 0.01)
             beta1, beta0 = deming_regression(xdivs, ydivs)
             plt.plot(xs, beta1*xs+beta0, color='k', lw=1.0)
-            #plt.plot(xs, rho_hat*xs+rho_intercept, color='k', lw=1.0)
             
             div_corr[division] = rho_hat
             div_corr_ste[division] = calc_corr_ste(rho_hat, len(xdivs))
@@ -120,8 +119,6 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
                 
                 #plt.plot(xs, beta1*xs+beta0, color='k', lw=1.0)
             
-                #plt.plot(xs, rho_hat*xs+rho_intercept, color=region_colors[rcidx], lw=1.0)
-                #plt.plot(xs, rho_hat*xs+rho_intercept, color=MedVisColors[rcidx], lw=1.0)
                 beta1, beta0 = deming_regression(xregs, yregs)
                 plt.plot(xs, beta1*xs+beta0, color=MedVisColors[rcidx], lw=1.0)
                 
@@ -209,7 +206,6 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
     print('Num animals: ', len(sbj_xs['tot']))
     
     xs = np.arange( np.min(sbj_xs['tot']), np.max(sbj_xs['tot']), 0.01 )
-    #plt.plot(xs, rho_hat*xs+rho_intercept, color='k', lw=1.0)
     beta1, beta0 = deming_regression(sbj_xs['tot'], sbj_ys['tot'])
     plt.plot(xs, beta1*xs+beta0, color='k', lw=1.0)
     
@@ -340,7 +336,6 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
     xs = np.arange( np.min(sbj_xs['tot']), np.max(sbj_xs['tot']), 0.01 )
     beta1, beta0 = deming_regression(sbj_xs['tot'], sbj_ys['tot'])
     plt.plot(xs, beta1*xs+beta0, color='k', lw=1.0)
-    #plt.plot(xs, rho_hat*xs+rho_intercept, color='k', lw=1.0)
     plt.show()
     fig5.savefig( "figs/fig_neural/" + data_type + "_behav_timescale_comparison_cortical_a2v_pc1_" + params_str + ".pdf" )  
 
@@ -417,7 +412,7 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
     
     # color mapping
     colorize_and_label_svg(
-        "cortical_map.svg", 
+        "ac_util/cortical_map.svg", 
         "figs/fig_cortico_map/cortical_map_colorized_tau2_" + data_type + "_" + params_str + ".svg", 
         region_tau2,
         np.zeros( np.size(region_tau2) ),
@@ -426,7 +421,7 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
     )
 
     colorize_and_label_svg(
-        "cortical_map.svg", 
+        "ac_util/cortical_map.svg", 
         "figs/fig_cortico_map/cortical_map_colorized_corr_" + data_type + "_" + params_str +  ".svg", 
         region_corr,
         region_pval,
@@ -581,7 +576,7 @@ def load_FR_data_SA(hy_params, behav_params, session_behav_stats):
     region_SA_stats = {}
     region_SA_corr = {}; region_SA_corr_ste = {}
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_SA_fR_characteristics_' + region_of_interest + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc'])\
+        fname = 'data/ndata/neural_analysis_SA_fR_characteristics_' + region_of_interest + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc'])\
                     + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '.txt'
         
         if path.exists(fname):
@@ -635,7 +630,7 @@ def load_FR_data_ITI(hy_params, behav_params, session_behav_stats):
     region_ITI_stats = {}
     region_ITI_corr = {}; region_ITI_corr_ste = {}  
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_ITI_FR_characteristics_' + region_of_interest + '_model_'\
+        fname = 'data/ndata/neural_analysis_ITI_FR_characteristics_' + region_of_interest + '_model_'\
             + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window']) + '_itimaxd' + str(hy_params['ITI_max_dur'])\
             + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
             + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max']) + '.txt'
@@ -723,7 +718,7 @@ def plot_FR_characteristics(hy_params, behav_params, data_type):
         print( division, calc_perm_significance(xdivs, ydivs) )
         
     colorize_and_label_svg(
-        "cortical_map.svg", 
+        "ac_util/cortical_map.svg", 
         "figs/fig_cortico_map/cortical_map_colorized_FR_impulsivity_" + str(data_type) + "_" + params_str + ".svg", 
         region_corr,
         np.zeros( np.size(region_corr) ),
@@ -819,14 +814,10 @@ def SA_neuronwise_timescale_analysis(SA_hy_params, behav_params):
     
 
 def ITI_behav_timescale_comparison(ITI_hy_params, behav_params):
-    #params_str = '_model_' + str(ITI_hy_params['model']) + '_proj_' + str(ITI_hy_params['projection']) + '_ITI_def_' + str(ITI_hy_params['ITI_def'])\
-    #       + '_wbin' + str(ITI_hy_params['bin_window']) + '_itimaxd' + str(ITI_hy_params['ITI_max_dur']) + '_ptstp' + str(ITI_hy_params['pre_stim_period'])\
-    #       + '_qc' + str(ITI_hy_params['cluster_qc']) + '_minN' + str(ITI_hy_params['min_neurons']) + '_min_sp' + str(ITI_hy_params['min_total_spikes'])\
-    #       + '_bs' + str(ITI_hy_params['bin_size']) + '_acfbm' + str(ITI_hy_params['acf_bin_max']) + '_niter' + str(ITI_hy_params['n_iter']) + '_nseeds' + str(ITI_hy_params['n_seeds'])
     params_str = '_model_' + str(ITI_hy_params['model']) + '_proj_' + str(ITI_hy_params['projection']) + '_ITI_def_' + str(ITI_hy_params['ITI_def'])\
             + '_wbin' + str(ITI_hy_params['bin_window']) + '_itimaxd' + str(ITI_hy_params['ITI_max_dur']) + '_ptstp' + str(ITI_hy_params['pre_stim_period'])\
             + '_qc' + str(ITI_hy_params['cluster_qc']) + '_minN' + str(ITI_hy_params['min_neurons']) + '_min_sp' + str(ITI_hy_params['min_total_spikes'])\
-            + '_bs' + str(ITI_hy_params['bin_size']) + '_acfbm' + str(ITI_hy_params['acf_bin_max']) + '_niter' + str(ITI_hy_params['n_iter']) + '_sctf' + str(behav_params['s_cutoff']) + '_nseeds' + str(ITI_hy_params['n_seeds'])
+            + '_bs' + str(ITI_hy_params['bin_size']) + '_acfbm' + str(ITI_hy_params['acf_bin_max']) + '_niter' + str(ITI_hy_params['n_iter']) + str(ITI_hy_params['n_seeds'])
                     
     region_stats, session_behav_stats, sbj_behav_stats = load_ac_behav_data(ITI_hy_params, behav_params, params_str, 'ITI')
     plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stats, ITI_hy_params, behav_params, params_str, 'ITI')
@@ -845,39 +836,6 @@ def ITI_neuronwise_timescale_analysis(ITI_hy_params, behav_params):
     #plot_tau_tau_comparison(region_stats, sbj_behav_stats, SA_hy_params, behav_params, params_str, 'SA')
     plot_hierarchy_scores(region_stats, ITI_hy_params, behav_params, params_str, 'ITI')
     
-
-def SA_ITI_comparison( SA_hy_params, ITI_full_hy_params, behav_params ):
-    SA_region_stats, SA_session_behav_stats, SA_sbj_behav_stats = load_ac_behav_data(SA_hy_params, behav_params, 'SA')
-    ITI_region_stats, ITI_session_behav_stats, ITI_sbj_behav_stats = load_ac_behav_data(ITI_full_hy_params, behav_params, 'ITI')
-    
-    SA_taus = []; ITI_taus = []
-    SA_taus_normalized = []; ITI_taus_normalized = []
-    for region in SA_region_stats.keys():
-        if region in ITI_region_stats.keys():
-            if len(SA_region_stats[region]) >= 5 and len(SA_region_stats[region]) >= 5:
-                for SA_region_session_stat in SA_region_stats[region]:
-                    for ITI_region_session_stat in ITI_region_stats[region]:
-                        if SA_region_session_stat['pid'] == ITI_region_session_stat['pid']:
-                            SA_taus.append( SA_region_session_stat['tau'] )
-                            ITI_taus.append( ITI_region_session_stat['tau'] )
-                            SA_taus_normalized.append( SA_region_session_stat['tau_normalized'] )
-                            ITI_taus_normalized.append( ITI_region_session_stat['tau_normalized'] )
-
-    
-    rho_hat, rho_intercept, pvalue = calc_perm_significance(SA_taus, ITI_taus)
-    print('tau : ', rho_hat, rho_intercept, pvalue)
-    
-    rho_hat, rho_intercept, pvalue = calc_perm_significance(SA_taus_normalized, ITI_taus_normalized)
-    print('tau_normalized : ', rho_hat, rho_intercept, pvalue)
-    
-    plt.subplot(1,2,1)
-    plt.scatter(SA_taus, ITI_taus, s=5)
-    plt.plot(np.arange(0.0, 1.0, 0.01), np.arange(0.0, 1.0, 0.01), color='k')
-
-    plt.subplot(1,2,2)
-    plt.scatter(SA_taus_normalized, ITI_taus_normalized, s=5)
-    plt.plot(np.arange(0.0, 2.5, 0.01), np.arange(0.0, 2.5, 0.01), color='k')
-    plt.show()
 
 
 def fit_comparison_SA(SA_hy_params, behav_params):
@@ -1024,8 +982,8 @@ if __name__ == "__main__":
     }
     
     SA_hy_params = {
-        'cluster_qc': 1.0, #1.0 , (0.0 for population fitting)
-        'min_neurons': 5,
+        'cluster_qc': 0.0, #1.0 , (0.0 for population fitting)
+        'min_neurons': 10,
         'min_total_spikes': 10000, #0, # 100000
         'min_firing_rate': 1.0, # for neuron-wise auto-correlation fitting
         'bin_size': 0.01, # (0.01 for population fitting)
@@ -1046,15 +1004,20 @@ if __name__ == "__main__":
         
         'trait': 'impulsivity', #'impulsivity'
     }
+    # Plot the correlation between behavior characteristics and cortical timescale
     SA_behav_timescale_comparison(SA_hy_params, behav_params)
+    
+    # Plot the correlation between behavior characteristics and firing rate statistics
     #plot_FR_characteristics(SA_hy_params, behav_params, 'SA')
+    
     #fit_comparison_SA(SA_hy_params, behav_params)
     
+    # Plot the correlation between behavior characteristics and cortical timescale estimated in a neuron-wise manner
     #SA_neuronwise_timescale_analysis(SA_hy_params, behav_params)
     
     ITI_full_hy_params = {
-        'cluster_qc': 1.0, # 0.0 or 0.5
-        'min_neurons': 5,
+        'cluster_qc': 0.0, # 0.0 or 0.5
+        'min_neurons': 10,
         'min_total_spikes': 10000, #100000, 
         'bin_size': 0.01, # bin size 
         'acf_bin_max': 75,  # number of bins used for fitting
@@ -1082,11 +1045,12 @@ if __name__ == "__main__":
         
         'min_firing_rate': 1.0, # for neuron-wise auto-correlation fitting
     }
+    # Plot the correlation between behavior characteristics and cortical timescale
     #ITI_behav_timescale_comparison(ITI_full_hy_params, behav_params)
+    
+    # Plot the correlation between behavior characteristics and firing rate statistics
     #plot_FR_characteristics(ITI_full_hy_params, behav_params, 'ITI')
 
+    # Plot the correlation between behavior characteristics and cortical timescale estimated in a neuron-wise manner
     #ITI_neuronwise_timescale_analysis(ITI_full_hy_params, behav_params)
-
-    #SA_ITI_comparison( SA_hy_params, ITI_full_hy_params, behav_params )
-    #fit_comparison_ITI(ITI_full_hy_params, behav_params)
     #autocorr_value_plot(ITI_full_hy_params,)

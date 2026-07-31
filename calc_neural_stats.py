@@ -19,7 +19,7 @@ from statsmodels.tsa.stattools import acf
 import warnings
 warnings.filterwarnings("ignore")
 
-from data_loading import classify_acronym, get_behavioral_stats
+from util.data_loading import classify_acronym, get_behavioral_stats
 from behav_analysis import load_data
 from calc_ac_SA import calc_trial_vecs 
 from calc_ac_ITI import calc_osci_power

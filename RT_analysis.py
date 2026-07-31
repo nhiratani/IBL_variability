@@ -1,6 +1,6 @@
 #
 # Functions for the analyses of reaction time (RT) in the IBL experiment
-#
+# 
 import os
 import requests
 import pandas as pd
@@ -11,7 +11,7 @@ import scipy.stats as scist
 import matplotlib.pyplot as plt
 from pylab import cm
 
-from utilities import anova_from_summary
+from util.utilities import anova_from_summary
 
 clr2s = ['#1f77b4', '#ff7f0e', '#2ca02c']
 
@@ -85,7 +85,6 @@ def plot_RT_stats(data, subject_info, params):
     plt.axvline(np.log(slow_threshold), ls='--', color='r', lw=2.0)
     
     plt.xlim(np.log(0.05), np.log(30.0))
-    #print(np.log(0.05), np.log(0.1), np.log(1.0), np.log(10.0)) 
     plt.xticks([np.log(0.1), np.log(1.0), np.log(10.0)], [0.1, 1.0, 10.0])
     plt.subplots_adjust(left=0.15, right=0.95)
     plt.show()
@@ -293,7 +292,7 @@ def plot_RT_stats(data, subject_info, params):
     for subject in data.keys():
         lab_name = subject_info[subject]['lab']
         lab_id = lab_list.index(lab_name)
-        #print(subject, lab_name, lab_id)
+
         for sidx in range( len(data[subject]) ):
             session_data = data[subject][sidx]
             session_len = len(session_data['stimOn_times'])
@@ -310,7 +309,7 @@ def plot_RT_stats(data, subject_info, params):
     lab_clrs = []
     for cidx in range(climit):
         lab_clrs.append( cm.Paired( (cidx+0.5)/climit ) )
-    #lab_clrs[-1] = 'k'
+
     
     EPS = 1e-6
     lab_rt_ratio = {'fast':[], 'slow':[]}
@@ -333,27 +332,6 @@ def plot_RT_stats(data, subject_info, params):
     fig6c.savefig( "figs/fig_behav/behav_analysis_plot_lateRT_stats_relative_session_time_lab_" + params_str + ".pdf" )
 
 
-    """
-    EPS = 1e-6
-    abs_rt_ratio = {'fast':{}, 'slow':{}}
-    abs_rt_err = {'fast':{}, 'slow':{}}
-    
-    for sex in ('F', 'M'):
-        for RT_type in ('fast', 'slow'):
-            abs_rt_ratio[RT_type][sex] = np.divide(abs_rt_counts[RT_type][sex], abs_rt_counts['total'][sex] + EPS)
-            abs_rt_err[RT_type][sex] = np.sqrt( np.divide( (1 - abs_rt_ratio[RT_type][sex]) * abs_rt_ratio[RT_type][sex], abs_rt_counts['total'][sex] + EPS ) ) 
-    
-    abs_session_times = range(dtrial//2, 1600, dtrial)
-    for RT_type in ('fast', 'slow'):
-        fig6c = plt.figure(figsize=(5.4, 4.8))
-        for sex in ('F', 'M'):
-            plt.fill_between(abs_session_times, abs_rt_ratio[RT_type][sex] + abs_rt_err[RT_type][sex], abs_rt_ratio[RT_type][sex] - abs_rt_err[RT_type][sex], alpha=0.25, color=sex_clrs[sex])
-            plt.plot(abs_session_times, abs_rt_ratio[RT_type][sex], color=sex_clrs[sex])
-        plt.xlim(0, 1600)
-        plt.show()
-        fig6c.savefig( "figs/fig_behav/behav_analysis_plot_" + RT_type + "RT_stats_absolute_session_time_M_F_" + params_str + ".pdf" )
-    """
-    
     # Number of trials per session for male and female mice
     session_length_dist = {'F': [], 'M': []}
     
@@ -428,8 +406,6 @@ def plot_RT_stats(data, subject_info, params):
                             if (mdtmp - 0.5)*(mdtmp2 - 0.5) < 0.0:
                                 congruent_zero_shot[tridx2-tridx+dT] += 1
     
-    #print(early_count, congruent_block, congruent_block/early_count)
-    #print(congruent_zero_shot, zero_shot_counts)
     
     fast_rt_err = np.sqrt( np.divide(np.multiply( np.ones((rstlen)) - fast_rt_ratio, fast_rt_ratio ), total_rt_counts ) ) 
     congruent_ratio = np.divide(congruent_zero_shot, zero_shot_counts)
@@ -796,8 +772,7 @@ def plot_ITI_distributions(raw_data, subject_data, subject_info, params):
     fig3.savefig('figs/fig_behav/ITI_distributions_impul_animal_wise_' + params_str + '.pdf')   
     
     print(scist.linregress(xs['tot'], ys['tot']))
-    #rho_hat, rho_intercept, pvalue = calc_perm_significance(xs, ys)
-    #print('animal-level relative FR:', rho_hat, rho_intercept, pvalue)
+
 
 
 def plot_psych_RT_stats(raw_data, subject_data, subject_info, params):

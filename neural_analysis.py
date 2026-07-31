@@ -18,16 +18,16 @@ warnings.filterwarnings("ignore")
 
 from calc_ac_SA import compute_SA_acf, compute_SA_neuronwise_acf
 from calc_ac_ITI import compute_ITI_acf, compute_ITI_neuronwise_acf
-from ac_fitting import fit_acf_model_trm_double, double_exp_model, double_exp_model_non_osci, double_exp_model_zph
+from ac_util.ac_fitting import fit_acf_model_trm_double, double_exp_model, double_exp_model_non_osci, double_exp_model_zph
 from calc_neural_stats import calc_ITI_FR_characteristics, calc_SA_FR_characteristics
 
 
 # get (sessions_id, pid) pairs for a given region 
 def readout_spids(region, params):
     if params['region_group'] == 'cortical':
-        fname = "rdata/list_of_sesssion_for_cortical_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
+        fname = "data/rdata/list_of_sesssion_for_cortical_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
     else:
-        fname = "rdata/list_of_sesssion_for_all_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
+        fname = "data/rdata/list_of_sesssion_for_all_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
     region_spids = []
     for line in open(fname, 'r'):
         ltmps = line[:-1].split(" ")
@@ -38,7 +38,7 @@ def readout_spids(region, params):
 
 def SA_acf_fitting(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+        fname = 'data/ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
             + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
             + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
             + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
@@ -71,7 +71,7 @@ def SA_acf_fitting(region_of_interests, hy_params):
 
 def SA_neuronwise_acf_fitting(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+        fname = 'data/ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
             + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons']) + '_min_fr' + str(hy_params['min_firing_rate'])\
             + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
             + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
@@ -104,7 +104,7 @@ def SA_neuronwise_acf_fitting(region_of_interests, hy_params):
 # simple plotting of population firing rates
 def SA_FR_characteristics(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_SA_fR_characteristics_' + region_of_interest + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc'])\
+        fname = 'data/ndata/neural_analysis_SA_fR_characteristics_' + region_of_interest + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc'])\
          + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '.txt'
         fw = open(fname, 'w')
         
@@ -123,7 +123,7 @@ def SA_FR_characteristics(region_of_interests, hy_params):
 # simple plotting of population firing rates
 def ITI_FR_characteristics(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_ITI_full_FR_characteristics_' + region_of_interest\
+        fname = 'data/ndata/neural_analysis_ITI_full_FR_characteristics_' + region_of_interest\
             + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
             + '_itifxd' + str(hy_params['ITI_start_fixed']) + '_tpstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
             + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '.txt'
@@ -145,7 +145,7 @@ def ITI_FR_characteristics(region_of_interests, hy_params):
 
 def ITI_full_acf_fitting(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+        fname = 'data/ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
             + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
             + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
             + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])\
@@ -184,7 +184,7 @@ def ITI_full_acf_fitting(region_of_interests, hy_params):
 
 def ITI_neuronwise_acf_fitting(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_ITI_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+        fname = 'data/ndata/neural_analysis_ITI_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
             + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
             + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
             + '_minN' + str(hy_params['min_neurons'])  + '_min_fr' + str(hy_params['min_firing_rate']) + '_bs' + str(hy_params['bin_size'])\
@@ -220,7 +220,7 @@ def ITI_neuronwise_acf_fitting(region_of_interests, hy_params):
 # simple plotting of population firing rates
 def ITI_FR_characteristics(region_of_interests, hy_params):
     for region_of_interest in region_of_interests:
-        fname = 'ndata/neural_analysis_ITI_FR_characteristics_' + region_of_interest + '_model_'\
+        fname = 'data/ndata/neural_analysis_ITI_FR_characteristics_' + region_of_interest + '_model_'\
             + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window']) + '_itimaxd' + str(hy_params['ITI_max_dur'])\
             + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
             + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max']) + '.txt'
@@ -278,13 +278,13 @@ if __name__ == "__main__":
         'slow_threshold': 1.25, # [s] threshold for slow trials'
         's_cutoff': 40, # remove last 40 trials to minimize the effect of satation. 
     }
-    SA_acf_fitting(region_of_interests, SA_hy_params)
+    #SA_acf_fitting(region_of_interests, SA_hy_params)
     #SA_FR_characteristics(region_of_interests, SA_hy_params)   
     #SA_neuronwise_acf_fitting(region_of_interests, SA_hy_params)
 
     
     ITI_full_hy_params = {
-        'cluster_qc': 0.5, # 0.0 or 0.5
+        'cluster_qc': 0.0, # 0.0 or 0.5
         'min_neurons': 10,
         'min_total_spikes': 10000, #30000, #100000, 
         'bin_size': 0.01, # 0.01  bin size 
@@ -311,6 +311,6 @@ if __name__ == "__main__":
         'min_firing_rate': 1.0, # applied only for neuron-wise analysis
     }
     #ITI_full_acf_fitting(region_of_interests, ITI_full_hy_params)
-    #ITI_FR_characteristics(region_of_interests, ITI_full_hy_params)
+    ITI_FR_characteristics(region_of_interests, ITI_full_hy_params)
     
     #ITI_neuronwise_acf_fitting(region_of_interests, ITI_full_hy_params)

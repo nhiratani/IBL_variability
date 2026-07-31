@@ -14,14 +14,15 @@ from os import path
 
 import matplotlib.pyplot as plt
 
-from behav_analysis import load_data, process_data
-from coloring import colorize_svg, colorize_and_label_svg
-from ac_fitting import double_exp_model_zph, double_exp_model_non_osci
+from util.data_loading import load_data
+from behav_analysis import process_data
+from ac_util.coloring import colorize_svg, colorize_and_label_svg
+from ac_util.ac_fitting import double_exp_model_zph, double_exp_model_non_osci
 
 from pylab import cm
 
 def readout_session_ids(region, params):
-    fname = "rdata/list_of_sesssion_for_cortical_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
+    fname = "data/rdata/list_of_sesssion_for_cortical_regions_qc" + str(params['cluster_qc']) + "_minN" + str(params['min_neurons']) + ".txt"
     region_session_ids = []
     for line in open(fname, 'r'):
         ltmps = line[:-1].split(" ")
@@ -270,24 +271,24 @@ def load_ac_behav_data(hy_params, behav_params, params_str, data_type):
     for ridx, region_of_interest in enumerate(region_of_interests):
         if data_type == 'SA':
             if behav_params['s_cutoff'] == 40:
-                fname = 'ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+                fname = 'data/ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
                 + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
                 + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
                 + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
             else:
-                fname = 'ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+                fname = 'data/ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
                 + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
                 + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
                 + '_niter' + str(hy_params['n_iter']) + '_sctf' + str(behav_params['s_cutoff']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
         elif data_type == 'ITI':
             if behav_params['s_cutoff'] == 40:
-                fname = 'ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+                fname = 'data/ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
                 + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
                 + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
                 + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])\
                 + '_acfbm' + str(hy_params['acf_bin_max']) + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
             else:
-                fname = 'ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+                fname = 'data/ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
                 + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
                 + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
                 + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])\
@@ -295,7 +296,7 @@ def load_ac_behav_data(hy_params, behav_params, params_str, data_type):
         
         session_ids = []
         acf_fitting = []; acf_values = []
-        print(fname)
+        print(fname, path.exists(fname))
         if path.exists(fname):
             lidx = 0
             for line in open(fname, 'r'):
@@ -331,7 +332,9 @@ def load_ac_behav_data(hy_params, behav_params, params_str, data_type):
                         #xs.append( acf_data['tau2'] )
                         sids.append( session_id ); pids.append( probe_id )
                         sess_cnt += 1
-                    
+            
+            #print(xs, sids, pids)
+            
             xs2 = []; sids2 = []; pids2 = []
             for x, sid, pid in zip(xs, sids, pids):
                 #if 0.03 < x and x < 5*np.nanmedian(xs):
@@ -439,12 +442,12 @@ def load_tau_error_dists(hy_params, behav_params, params_str, data_type):
     relative_tau_dists = []
     for ridx, region_of_interest in enumerate(region_of_interests):
         if data_type == 'SA':
-            fname = 'ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+            fname = 'data/ndata/neural_analysis_SA_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
                 + '_proj_' + str(hy_params['projection']) + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons'])\
                 + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
                 + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
         elif data_type == 'ITI':
-            fname = 'ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+            fname = 'data/ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
             + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
             + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
             + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])\
@@ -491,7 +494,7 @@ def get_acf_values(hy_params, region_of_interest):
     #len_rois = len(region_of_interests)
     session_ids = []; acf_values = []
 
-    fname = 'ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+    fname = 'data/ndata/neural_analysis_ITI_full_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
         + '_proj_' + str(hy_params['projection']) + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
         + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
         + '_minN' + str(hy_params['min_neurons']) + '_min_sp' + str(hy_params['min_total_spikes']) + '_bs' + str(hy_params['bin_size'])\
@@ -544,16 +547,16 @@ def load_neuronwise_ac_data(hy_params, behav_params, params_str, data_type):
     error_dists = []
     for ridx, region_of_interest in enumerate(region_of_interests):
         if data_type == 'SA':
-            fname = 'ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
+            fname = 'data/ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_model_' + str(hy_params['model'])\
             + '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons']) + '_min_fr' + str(hy_params['min_firing_rate'])\
             + '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
             + '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
-            #fname = 'ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+            #fname = 'data/ndata/neural_analysis_SA_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
             #+ '_qc' + str(hy_params['cluster_qc']) + '_minN' + str(hy_params['min_neurons']) + '_min_fr' + str(hy_params['min_firing_rate'])\
             #+ '_bs' + str(hy_params['bin_size']) + '_acfbm' + str(hy_params['acf_bin_max'])\
             #+ '_niter' + str(hy_params['n_iter']) + '_nseeds' + str(hy_params['n_seeds']) + '.txt'
         elif data_type == 'ITI':
-            fname = 'ndata/neural_analysis_ITI_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
+            fname = 'data/ndata/neural_analysis_ITI_neuronwise_acf_fitting_' + region_of_interest + '_taunum_' + str(hy_params['tau_num']) + '_model_' + str(hy_params['model'])\
             + '_ITI_def_' + str(hy_params['ITI_def']) + '_wbin' + str(hy_params['bin_window'])\
             + '_itimaxd' + str(hy_params['ITI_max_dur']) + '_ptstp' + str(hy_params['pre_stim_period']) + '_qc' + str(hy_params['cluster_qc'])\
             + '_minN' + str(hy_params['min_neurons'])  + '_min_fr' + str(hy_params['min_firing_rate']) + '_bs' + str(hy_params['bin_size'])\

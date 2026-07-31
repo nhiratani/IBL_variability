@@ -18,7 +18,6 @@ import scipy.stats as scist
 
 from pylab import cm
 
-#from utilities import mmd_permutation_test
 
 climit = 5
 clrs = []
@@ -31,7 +30,7 @@ lab_clrs = []
 for cidx in range(climit):
     lab_clrs.append( cm.Paired( (cidx+0.5)/climit ) )
 
-from data_loading import load_data
+from util.data_loading import load_data
 from RT_analysis import calc_block_idx, calc_contrast_idx, calc_contrast, get_lab_list, plot_RT_stats, plot_ITI_distributions, plot_psych_RT_stats, plot_RT_stats2
 
 
@@ -242,7 +241,7 @@ def plot_impulsivity_stats(processed_data, subj_data, subject_info, params):
     plt.show()
     fig7.savefig("figs/fig_behav/behav_analysis_plot_ephys_slow_ratio_vs_reward_rate_" + params_str + ".pdf")
 
-    fstr = 'ex_data/num_sessions_to_expertise.txt' 
+    fstr = 'data/ex_data/num_sessions_to_expertise.txt' 
     num_learning_sessions = {}
     for line in open(fstr,'r'):
         ltmps = line.split(',')
@@ -520,19 +519,6 @@ def plot_within_animal_variability(data, subj_data, params):
     fig1.savefig("figs/fig_behav/behav_analysis_plot_ephys_within_animal_variability_" + params_str + ".pdf")
     
     
-    # MMD2-stat
-    #fig1 = plt.figure(figsize=(5.4, 4.8))
-    #RBF_gamma = 1.0/( 2.0*0.05*0.05 )
-    #null_mmd2_dist, observed_mmd2, p_value = mmd_permutation_test(np.array(within_animal_variability), np.array(std_unweighted), iterations=10, gamma=RBF_gamma)
-    #print( 'mmd2 stats', observed_mmd2, p_value )
-    
-    #plt.hist( null_mmd2_dist, color='gray', alpha=0.5 )
-    #plt.axvline( observed_mmd2, color=clr2s[0] )
-    #plt.show()
-    
-    #fig1.savefig("figs/fig_behav/behav_analysis_plot_ephys_within_animal_variability_mmd2_stats" + params_str + ".pdf")
-    
-    
     subjects = list(subj_data.keys())
     ratio_fast_per_subj = [subj_data[subject]['num_fast'] / subj_data[subject]['num_trials'] for subject in subjects if subj_data[subject]['num_sessions'] >= min_sessions]
     ratio_slow_per_subj = [subj_data[subject]['num_slow'] / subj_data[subject]['num_trials'] for subject in subjects if subj_data[subject]['num_sessions'] >= min_sessions]
@@ -621,16 +607,6 @@ def plot_medianRT_stats(data, sbj_data, sbj_info, params):
     fig2.savefig("figs/fig_behav/behav_analysis_plot_ephys_impulsivity_per_subj_vs_medianRT_" + params_str + ".pdf")
     slope, intercept, r, p, se = scist.linregress( impulsivity_per_subj, medianRT_list )
     print('fast_rate_per_subj vs medianRT', slope, intercept, r, p)
-    
-    """
-    fig3 = plt.figure(figsize=(5.4, 4.8))
-    for sex_id in range(2):
-        plt.scatter( medianRT_by_sex[sex_id], ratio_slow_per_subj_by_sex[sex_id], color=sex_clrs[sex_id], s=50 )
-    plt.show()
-    fig3.savefig("figs/fig_behav/behav_analysis_plot_ephys_slow_rate_per_subj_vs_medianRT_" + params_str + ".pdf")
-    slope, intercept, r, p, se = scist.linregress( medianRT_list, ratio_slow_per_subj )
-    print('slow_rate_per_subj vs medianRT', slope, intercept, r, p)
-    """
     
     color_subj = derive_colors(impulsivity_per_subj)
 
@@ -838,10 +814,6 @@ def psych_curve_variability(data, sbj_data, subject_info, params):
             impulsivity_per_animal[subject] = (sbj_data[subject]['num_fast'] - sbj_data[subject]['num_slow'])/sbj_data[subject]['num_trials'] 
     
     fig3 = plt.figure(figsize=(5.4, 4.8))
-    #sd_impulsivity = [[], [], []]
-    #for qidx, sd_subjects in enumerate(slope_diff_groups):
-    #   sd_impulsivity[qidx] = [ impulsivity_per_animal[subject] for subject in sd_subjects ]
-    #print( scist.f_oneway(sd_impulsivity[0], sd_impulsivity[1], sd_impulsivity[2]) )
     xtot = []; ytot = []
     for qidx, sd_subjects in enumerate(slope_diff_groups):
         slope_diff_impulsivity = [ (psych_curves[subject][block_type]['slope_diff'], impulsivity_per_animal[subject]) for subject in sd_subjects ]
@@ -992,7 +964,7 @@ def fast_slow_freq_stats(data, subject_data, subject_info, params):
         cond_probs_tot = np.array(cond_probs[trial_type])
         mean_cond_probs = np.nanmean(cond_probs_tot, axis=0)
         sem_cond_probs = np.nanstd(cond_probs_tot, axis=0)/np.sqrt( len(cond_probs[trial_type]) )
-        #print( len(mean_cond_probs), range(nlag) )
+
         plt.fill_between( range(1,nlag+1,1), mean_cond_probs+sem_cond_probs, mean_cond_probs-sem_cond_probs, color=fs_colors[trial_type], alpha=0.2 )
         plt.plot( range(1,nlag+1,1), mean_cond_probs, color=fs_colors[trial_type] )
 
@@ -1013,14 +985,13 @@ def fast_slow_freq_stats(data, subject_data, subject_info, params):
         mean_cond_probs = np.nanmean(cond_probs_tot, axis=0)
         sem_cond_probs = np.nanstd(cond_probs_tot, axis=0)/np.sqrt( len(cond_probs[trial_type]) )
 
-        #print( len(mean_cond_probs), range(nlag) )
         plt.fill_between( range(1,nlag+1,1), mean_cond_probs+sem_cond_probs, mean_cond_probs-sem_cond_probs, color=fs_colors[trial_type], alpha=0.2 )
         plt.plot( range(1,nlag+1,1), mean_cond_probs, color=fs_colors[trial_type] )
 
         shuffled_cond_probs_tot = np.array(sl_shuffled_cond_probs[trial_type])
         shuffled_mean_cond_probs = np.nanmean(shuffled_cond_probs_tot, axis=0)
         plt.plot( range(1,nlag+1,1), shuffled_mean_cond_probs, color=fs_colors[trial_type], ls='--' )
-        #plt.axhline( np.nanmean(fs_ratio[trial_type]), color=fs_colors[trial_type], ls='--' )
+
     plt.ylim(0.0, 0.35)
     plt.xlim(0.0, nlag)
     plt.show()
@@ -1066,19 +1037,26 @@ if __name__ == "__main__":
         'min_sessions': 2 # minimum number of sessions required for individual level analysis (inclusive)
     }
 
+    # Get the raw behavoiral data 
     raw_data, subject_info = load_data(params['session_type'], one)
+
+    # Calculate RT statistics for Figure 1
     plot_RT_stats(raw_data, subject_info, params)
     plot_RT_stats2(raw_data, subject_info, params)
     
-    #processed_data, subject_data = process_data(raw_data, params)
-    #plot_impulsivity_stats(processed_data, subject_data, subject_info, params)
-    #plot_impulsivity_stats2(subject_data, subject_info, params)
-    #plot_within_animal_variability(processed_data, subject_data, params)
-    #plot_medianRT_stats(processed_data, subject_data, subject_info, params)
+    # Generate subject-wise data
+    processed_data, subject_data = process_data(raw_data, params)
     
+    # Calculate impulsivity statistics for Figure 2
+    plot_impulsivity_stats(processed_data, subject_data, subject_info, params)
+    plot_impulsivity_stats2(subject_data, subject_info, params)
+    plot_within_animal_variability(processed_data, subject_data, params)
+    plot_medianRT_stats(processed_data, subject_data, subject_info, params)
+    
+    # Calculate and visualize additional behavioral measures
+    plot_ITI_distributions(raw_data, subject_data, subject_info, params)
+    plot_psych_RT_stats(raw_data, subject_data, subject_info, params)
+    
+    psych_curve_variability(processed_data, subject_data, subject_info, params)
+    fast_slow_freq_stats(processed_data, subject_data, subject_info, params)
 
-    #plot_ITI_distributions(raw_data, subject_data, subject_info, params)
-    #plot_psych_RT_stats(raw_data, subject_data, subject_info, params)
-    
-    #psych_curve_variability(processed_data, subject_data, subject_info, params)
-    #fast_slow_freq_stats(processed_data, subject_data, subject_info, params)
