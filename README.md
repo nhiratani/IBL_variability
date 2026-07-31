@@ -23,7 +23,7 @@ python demo.py
 - Please see [ONE Setup](https://int-brain-lab.github.io/ONE/one_installation.html) for installation and setup of ONE. 
 
 - - -
-## Fie description
+## File description
 
 - RT_analysis.py: Code for RT analysis in Fig. 1
 
