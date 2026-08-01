@@ -5,7 +5,7 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - - - 
 ## System requirement
-- The required packages for behavioral and auto-correlation analyses are specified in ibl_var.yml
+- The required packages for behavioral and auto-correlation analyses are specified in [ibl_var.yml](ibl_var.yml)
 
 - The code for animal2vec analysis additionally requires [Flax library](https://github.com/google/flax) 
 
@@ -20,7 +20,7 @@ python demo.py
 
 - Demo code readout the wheel statistics from pre-calculated files. Those wheel statistics data files were generated using util/calc_behav_stats.py. 
 
-- Please see [ONE Setup](https://int-brain-lab.github.io/ONE/one_installation.html) for installation and setup of ONE. 
+- Demo code runs at ibllib version 4.01 + Python 3.12.  
 
 - - -
 ## File description
