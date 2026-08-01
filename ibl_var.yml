@@ -19,8 +19,6 @@ dependencies:
     - requests==2.32.3
     
     # International Brain Laboratory (IBL) Tools
-    - one-api==2.11.2
-    - iblatlas==0.5.6
     - ibllib==4.0.1
     
     # Neurophysiology Tools
