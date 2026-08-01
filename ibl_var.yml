@@ -24,4 +24,4 @@ dependencies:
     # Neurophysiology Tools
     - quantities==0.16.2
     - neo==0.14.3
-    - elephant==1.1.1
+    - elephant==1.2.1
