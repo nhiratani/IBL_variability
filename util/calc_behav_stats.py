@@ -169,7 +169,7 @@ def process_behav_data(session_type):
             wheel_position, wheel_timestamps = load_wheel_data(eid, session_type)
             
             if wheel_position is None or wheel_timestamps is None:
-                continue
+                print(f"Session {eid} was skipped. Either wheel_position or wheel_timestamps is None.")
                                 
             else:
                 wheel_velocity = calc_wheel_velocity(wheel_position, wheel_timestamps)
