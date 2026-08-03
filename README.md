@@ -20,7 +20,9 @@ conda activate ibl_var_env
 python demo.py
 ```
 
-The code displays a figure depicting panels C-H of Figure 1.
+The code displays a figure depicting panels C-H of Figure 1 and saves the figure in figs/fig_behav.
+
+demo2.py generates a figure depicting panels A-G of Figure 2. 
 
 The demo reads precomputed wheel-statistics files included with the repository. 
 
