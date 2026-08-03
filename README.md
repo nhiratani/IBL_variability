@@ -20,9 +20,9 @@ conda activate ibl_var_env
 python demo.py
 ```
 
-The code displays a figure depicting panels C-H of Figure 1 and saves the figure in figs/fig_behav.
+The code displays a figure depicting panels C-H of Figure 1 and saves the figure in `figs/fig_behav`.
 
-demo2.py generates a figure depicting panels A-G of Figure 2. 
+`demo2.py` generates a figure depicting panels A-G of Figure 2. 
 
 The demo reads precomputed wheel-statistics files included with the repository. 
 
@@ -47,9 +47,9 @@ Note that `neural_analysis.py` downloads spike-sorting data to the local machine
 - - -
 ## File description
 
-- RT_analysis.py: Code for RT analysis in Fig. 1
+- `RT_analysis.py`: Code for RT analysis in Fig. 1
 
-- behav_analysis.py: Code for the analysis of behavioral variability in Fig. 2
+- `behav_analysis.py`: Code for the analysis of behavioral variability in Fig. 2
 
 - Animal2vec : Code for the animal embedding analysis in Fig. 3
 
@@ -57,9 +57,9 @@ Note that `neural_analysis.py` downloads spike-sorting data to the local machine
 
 - traj : Code for neural trajectory analysis in Fig. 5
 
-- neural_analysis.py / calc_neural_stats.py / calc_ac_SA.py / calc_ac_ITI.pyy : Code for neural analysis in Figs. 6 and 7
+- `neural_analysis.py` / `calc_neural_stats.py` / `calc_ac_SA.py` / `calc_ac_ITI.py` : Code for neural analysis in Figs. 6 and 7
 
-- plot_neural_stats.py / plot_stats_helper.py / plot_wheel_stat.py: Code for plotting Figs. 6 and 7
+- `plot_neural_stats.py` / `plot_stats_helper.py` / `plot_wheel_stat.py` : Code for plotting Figs. 6 and 7
 
 - prior_decoding: Code for prior decoding analysis in Supp fig. 10
 
@@ -69,11 +69,11 @@ Note that `neural_analysis.py` downloads spike-sorting data to the local machine
 
 ### Auxiliary files
 
-- data/bdata_ephys/calc_behav_stats_eid*.txt: These file contain pre-processed wheel statistics along with corresponding behavioral statistics. They can be generated with util/calc_behav_stats.py. 
+- `data/bdata_ephys/calc_behav_stats_eid*.txt` : These file contain pre-processed wheel statistics along with corresponding behavioral statistics. They can be generated with util/calc_behav_stats.py. 
 
-- data/ex_data/num_sessions_to_expertise.txt: A list of the number of sessions required to reach the expert level estimated from training-rig data
+- `data/ex_data/num_sessions_to_expertise.txt` : A list of the number of sessions required to reach the expert level estimated from training-rig data
 
-- list_of_session_for_cortical_regions*.txt: A list of session id and probe id for each cortical region. These files were generated from util/data_loading.py 
+- `list_of_session_for_cortical_regions*.txt` : A list of session id and probe id for each cortical region. These files were generated from util/data_loading.py 
 
 - - -
 
