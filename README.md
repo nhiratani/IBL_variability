@@ -11,16 +11,34 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - - -
 ## Demo
-Figures 1 can be replicated by running the following at the folder where you downloaded the code:
-```
+
+Figure 1 can be reproduced by running the following commands from the repository root directory:
+
+```bash
 conda env create -f ibl_var.yml
 conda activate ibl_var_env
 python demo.py
 ```
 
-- Demo code readout the wheel statistics from pre-calculated files. Those wheel statistics data files were generated using util/calc_behav_stats.py. 
+The demo reads precomputed wheel-statistics files included with the repository. These files were generated using `util/calc_behav_stats.py`.
 
-- Demo code runs at ibllib version 4.01 + Python 3.12.  
+The code has been tested in macOS Sequoia and Rocky Linux 9, 
+
+### Additional analyses
+
+Additional behavioral statistics can be calculated by running:
+
+```bash
+python behav_analysis.py
+```
+
+Neural autocorrelation analyses can be performed by running:
+
+```bash
+python neural_analysis.py
+```
+
+Note that `neural_analysis.py` downloads spike-sorting data to the local machine. The analysis may require substantial disk space and ~12 hours to complete, depending on the machine and network connection.
 
 - - -
 ## File description
