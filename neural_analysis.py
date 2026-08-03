@@ -310,7 +310,7 @@ if __name__ == "__main__":
         
         'min_firing_rate': 1.0, # applied only for neuron-wise analysis
     }
-    #ITI_full_acf_fitting(region_of_interests, ITI_full_hy_params)
-    ITI_FR_characteristics(region_of_interests, ITI_full_hy_params)
+    ITI_full_acf_fitting(region_of_interests, ITI_full_hy_params)
+    #ITI_FR_characteristics(region_of_interests, ITI_full_hy_params)
     
     #ITI_neuronwise_acf_fitting(region_of_interests, ITI_full_hy_params)
