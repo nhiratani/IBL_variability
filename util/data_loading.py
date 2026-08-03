@@ -17,7 +17,10 @@ from os import path
 
 from iblatlas.atlas import AllenAtlas
 from brainbox.io.one import SpikeSortingLoader
-ba = AllenAtlas()
+try:
+    ba = AllenAtlas()
+except Exception:
+    print("Allen Atlas loading error")
 
 # ignoring warnings
 import warnings
