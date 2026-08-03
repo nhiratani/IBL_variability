@@ -13,6 +13,7 @@ dependencies:
     - matplotlib==3.11.1
     - seaborn==0.13.2
     - statsmodels==0.14.6
+    - svgpathtools
     - beautifulsoup4
     
     # Core Utilities
