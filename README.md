@@ -15,7 +15,7 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 Figure 1 can be reproduced by running the following commands from the repository root directory:
 
 ```bash
-conda env create -f ibl_var.yml
+conda env create -f environment.yml
 conda activate ibl_var_env
 python demo.py
 ```
