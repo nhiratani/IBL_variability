@@ -88,6 +88,7 @@ def plot_tau_trait_comparisons(region_stats, session_behav_stats, sbj_behav_stat
         plt.title(division, fontsize=12)
         
     plt.show()
+    import os
     os.makedirs('figs/fig_neural', exist_ok=True)
     fig1.savefig( "figs/fig_neural/" + data_type + "_behav_timescale_comparison_divisional_" + params_str + ".pdf" )    
     
