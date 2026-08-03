@@ -22,7 +22,7 @@ python demo.py
 
 The code displays a figure depicting panels C-H of Figure 1.
 
-The demo reads precomputed wheel-statistics files included with the repository. These files can be generated using `util/calc_behav_stats.py`.
+The demo reads precomputed wheel-statistics files included with the repository. 
 
 The code has been tested in macOS Sequoia and Rocky Linux 9.
 
@@ -64,7 +64,15 @@ Note that `neural_analysis.py` downloads spike-sorting data to the local machine
 - util: Utility functions for data loading and statistics
 
 - ac_util : Utility functions for autocorrelation analysis
-  
+
+### Auxiliary files
+
+- data/bdata_ephys/calc_behav_stats_eid*.txt: These file contain pre-processed wheel statistics along with corresponding behavioral statistics. They can be generated with util/calc_behav_stats.py. 
+
+- data/ex_data/num_sessions_to_expertise.txt: A list of the number of sessions required to reach the expert level estimated from training-rig data
+
+- list_of_session_for_cortical_regions*.txt: A list of session id and probe id for each cortical region. These files were generated from util/data_loading.py 
+
 - - -
 
 - Please see [IBL ONE Website](https://int-brain-lab.github.io/ONE/) for the documentation and setup guide for the IBL data analysis environment.
