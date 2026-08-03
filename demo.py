@@ -209,8 +209,8 @@ def draw_psychometric(ax, psychometric, ste, title):
     ax.set_ylim(-0.01, 1.01)
     ax.set_xticks([-1.0, 0.0, 1.0])
     ax.set_title(title)
-    ax.set_xlabel('contrast')
-    ax.set_ylabel('P(rightward)')
+    ax.set_xlabel('Contrast')
+    ax.set_ylabel('Prob. right motion')
 
 
 def draw_contrast_rt_hist(ax, RTs, RTs_incorrect, title):
@@ -229,8 +229,8 @@ def draw_relative_session_ratio(ax, times, fast_ratio, slow_ratio, fast_err, slo
     ax.plot(times, slow_ratio, color='m')
     ax.set_xlim(-0.01, 1.01)
     ax.set_title('Fast/slow ratio vs session time')
-    ax.set_xlabel('relative session time')
-    ax.set_ylabel('fraction of trials')
+    ax.set_xlabel('Within session time')
+    ax.set_ylabel('Fraction of trials')
 
 
 def draw_cond_probs(ax, sl_cond_probs, sl_shuffled_cond_probs, cond_probs, nlag):
@@ -249,8 +249,8 @@ def draw_cond_probs(ax, sl_cond_probs, sl_shuffled_cond_probs, cond_probs, nlag)
     ax.set_ylim(0.0, 0.35)
     ax.set_xlim(0.0, nlag)
     ax.set_title('RT-type conditional prob.')
-    ax.set_xlabel('trial lag')
-    ax.set_ylabel('P(same type)')
+    ax.set_xlabel('Trial lag')
+    ax.set_ylabel('Prob. same type')
 
 
 # ---------------------------------------------------------------------------
