@@ -5,7 +5,7 @@ Preprint is available at https://www.biorxiv.org/content/10.1101/2025.07.11.6644
 
 - - - 
 ## System requirement
-- The required packages for behavioral and auto-correlation analyses are specified in [ibl_var.yml](ibl_var.yml)
+- The required packages for behavioral and auto-correlation analyses are specified in [environment.yml](environment.yml)
 
 - The code for animal2vec analysis additionally requires [Flax library](https://github.com/google/flax) 
 
