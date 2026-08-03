@@ -20,9 +20,11 @@ conda activate ibl_var_env
 python demo.py
 ```
 
-The demo reads precomputed wheel-statistics files included with the repository. These files were generated using `util/calc_behav_stats.py`.
+The code displays a figure depicting panels C-H of Figure 1.
 
-The code has been tested in macOS Sequoia and Rocky Linux 9, 
+The demo reads precomputed wheel-statistics files included with the repository. These files can be generated using `util/calc_behav_stats.py`.
+
+The code has been tested in macOS Sequoia and Rocky Linux 9.
 
 ### Additional analyses
 
