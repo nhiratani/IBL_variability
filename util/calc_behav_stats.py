@@ -11,6 +11,8 @@ one = ONE(password='international')
 import numpy as np
 import scipy.stats as scist
 
+import os, requests
+
 from os import path
 from brainbox.io.one import SessionLoader
 
@@ -121,6 +123,7 @@ def calc_movement_onset_times(trial_timestamps, trial_velocity, stimOn_times):
 def write_data_to_file( sdata, session_type ):
     if session_type == 'ephys':
         fname = "wdata/calc_behav_stats_eid" + str( sdata['session_id'] ) + ".txt"
+        os.makedirs('wdata', exist_ok=True)
     elif session_type == 'behav':
         fname = "bdata_all/calc_behav_stats_eid" + str( sdata['session_id'] ) + ".txt"
     
