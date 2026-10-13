@@ -101,7 +101,7 @@ def calc_corr(xs, ys):
 
 def calc_corr_ste(rho, N):
     if N > 2:
-        return np.sqrt( (1-rho*rho)/(N-2) )
+        return (1-rho*rho)/np.sqrt( (N-2) )
     else:
         return np.nan
 
